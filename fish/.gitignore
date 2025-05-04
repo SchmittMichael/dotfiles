@@ -1,0 +1,3 @@
+# Ignore every function by default
+functions/*
+!functions/custom
