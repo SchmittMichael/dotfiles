@@ -141,6 +141,7 @@ alias gal='~/custom_scripts/git_all'
 alias saup='sudo apt update'
 alias saug='sudo apt upgrade -y'
 alias off='poweroff'
+alias update='sudo echo "Updating apt..." && sudo apt update && sudo apt upgrade -y && echo "Updating snap..." && sudo snap refresh'
 
 ## terminal colors
 alias l='eza -la'
