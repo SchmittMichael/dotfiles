@@ -59,3 +59,9 @@ vim.cmd("set langmenu=en_US")
 
 -- disable syntax tree features on large files
 TS_MAX_LINES = 3000
+
+-- enable virtual text for diagnostics
+vim.diagnostic.config({
+  virtual_text = true,
+  severity_sort = true,
+})
