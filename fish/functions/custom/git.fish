@@ -23,3 +23,7 @@ function gal
   git commit -m "$argv"
   git push
 end
+
+function glol
+  git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"
+end
