@@ -58,8 +58,8 @@ return {
     lazy = true,
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
-    opts = {},
-    init = function()
+    config = function(opts)
+      require("mason").setup(opts)
       local mr = require("mason-registry")
 
       if next(mr.get_installed_package_names()) == nil then
