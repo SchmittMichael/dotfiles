@@ -1,3 +1,4 @@
+set fish_greeting ""
 # Commands to run in interactive sessions can go here
 if status is-interactive
 
@@ -11,7 +12,3 @@ if status is-interactive
   # vi keybinds
   set -g fish_key_bindings fish_vi_key_bindings
 end
-
-# Disable start prompt
-function fish_prompt; echo ""; end
-

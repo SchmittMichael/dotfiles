@@ -1,3 +1,8 @@
+if not type -q fisher
+  source ../fisher_init.fish
+end
+
+
 function __source
     # Using type instead of command allows for functions too
     if type -q $argv[1]
@@ -6,7 +11,7 @@ function __source
 end
 
 # loading .profile
-bass source ~/.profile
+bass source ~/.profile; or echo "Couldn't load `.profile`, bass isn't installed..."
 
 # some sourcing
 __source zoxide init fish 
