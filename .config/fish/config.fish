@@ -4,7 +4,7 @@ if status is-interactive
 
   # Load custom functions
   set -U fish_function_path $fish_function_path 
-  for script in (find ~/.config/fish/functions/custom -type f -name "*.fish")
+  for script in (find -L ~/.config/fish/functions/custom -type f -name "*.fish")
       source $script
   end
 

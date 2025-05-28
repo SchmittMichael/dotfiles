@@ -1,3 +1,3 @@
 function md
-  mkdir -p "$argv"
+  mkdir -p $argv
 end

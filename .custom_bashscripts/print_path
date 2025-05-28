@@ -1,0 +1,10 @@
+#!/bin/bash
+
+full_path=$(pwd)
+max_length=20
+
+if ((${#full_path} <= max_length)); then
+  echo "$full_path"
+else
+  echo "$full_path" | sed -e "s|$HOME|~|" -e 's|\([^/]\)[^/]*/|\1/|g'
+fi
