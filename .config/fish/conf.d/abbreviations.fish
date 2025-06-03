@@ -7,6 +7,7 @@ abbr --add suod 'sudo'
 abbr --add saup 'sudo apt update'
 abbr --add saug 'sudo apt upgrade -y'
 abbr --add off 'poweroff'
+abbr --add py 'python3'
 
 if test -f  '~/custom_scripts/git_all'
   abbr --add gal

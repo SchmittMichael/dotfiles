@@ -147,7 +147,7 @@ alias update='sudo echo "Updating apt..." && sudo apt update && sudo apt upgrade
 alias l='eza -la'
 alias lss='eza -lf --color=always --sort=size'
 alias ll='eza -l --group-directories-first'
-alias ld='eza -lD'
+# alias ld='eza -lD'
 alias lda='eza -lDa'
 alias lf='eza -lf --color=always'
 alias lfa='eza -lfa --color=always'
