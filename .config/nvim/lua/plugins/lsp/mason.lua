@@ -51,6 +51,13 @@ local function install_packages(mr)
   end
 end
 
+-- command to force install required packages (removes non required tools as well)
+vim.api.nvim_create_user_command("MasonReinstall", function()
+  vim.cmd("Lazy load mason.nvim")
+  vim.cmd("MasonUninstallAll")
+  install_packages(require("mason-registry"))
+end, { desc = "Reinstall all required packages." })
+
 return {
   {
     "williamboman/mason.nvim",
