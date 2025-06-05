@@ -1,6 +1,6 @@
-[terminal]
-shell.program = "wsl"
-shell.args = ["~"]
+# [terminal]
+# shell.program = "wsl"
+# shell.args = ["~"]
 
 [window]
 decorations = "none"
@@ -11,9 +11,6 @@ startup_mode =  "Maximized"
 chars = "\u0000"
 key = "Space"
 mods = "Control"
-
-[env]
-TERM = "alacritty"
 
 [font]
 normal = { family = "Hack Nerd Font" }
