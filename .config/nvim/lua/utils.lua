@@ -28,3 +28,22 @@ function File_exists(file)
     return false
   end
 end
+
+function Has_value(array, searched_val)
+  for _, val in ipairs(array) do
+    if val == searched_val then
+      return true
+    end
+  end
+  return false
+end
+
+function Merge_sets(set1, set2)
+  local result = set1
+  for _, val in ipairs(set2) do
+    if not Has_value(result, val) then
+      table.insert(result, val)
+    end
+  end
+  return result
+end

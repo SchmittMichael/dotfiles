@@ -1,4 +1,6 @@
-local packages = {
+require("utils")
+
+local default_packages = {
   -- lsps --
   -- "ansible-language-server",
   "bash-language-server",
@@ -32,7 +34,7 @@ local function mason_notify(message, level)
   return function() vim.notify("(Mason) " .. message, level, { title = "Mason Install" }) end
 end
 
-local function install_packages(mr)
+local function install_packages(mr, packages)
   for _, name in ipairs(packages) do
     local ok, pkg = pcall(mr.get_package, name)
     if not ok then
@@ -53,9 +55,13 @@ end
 
 -- command to force install required packages (removes non required tools as well)
 vim.api.nvim_create_user_command("MasonReinstall", function()
+  local mr = require("mason-registry")
+  local installed_packages = mr.get_installed_package_names()
+  local merged_packages = Merge_sets(default_packages, installed_packages)
+
   vim.cmd("Lazy load mason.nvim")
   vim.cmd("MasonUninstallAll")
-  install_packages(require("mason-registry"))
+  install_packages(mr, merged_packages)
 end, { desc = "Reinstall all required packages." })
 
 return {
@@ -70,7 +76,7 @@ return {
       local mr = require("mason-registry")
 
       if next(mr.get_installed_package_names()) == nil then
-        install_packages(mr)
+        install_packages(mr, default_packages)
       end
     end,
   },
