@@ -167,10 +167,3 @@ alias print-mq='sudo /opt/apache/activemq/bin/activemq dstat queues | tail -n +1
 
 # enable vi mode
 set -o vi
-
-# bun completions
-[ -s "/home/michael/.bun/_bun" ] && source "/home/michael/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
