@@ -65,3 +65,5 @@ vim.diagnostic.config({
   virtual_text = true,
   severity_sort = true,
 })
+
+vim.opt.undofile = true
