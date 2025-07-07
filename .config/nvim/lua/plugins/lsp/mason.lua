@@ -21,6 +21,7 @@ local default_packages = {
   "isort",
   "black",
   "shfmt",
+  "taplo",
   -- linter --
   "pylint",
   "shellcheck",

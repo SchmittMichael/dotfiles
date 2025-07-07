@@ -34,6 +34,7 @@ return {
         sh = { "shfmt" },
         sql = { "sql_formatter" },
         tex = { "latexindent" },
+        toml = { "taplo" },
       },
       -- format_on_save = format_opts,
     })
