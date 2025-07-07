@@ -18,10 +18,15 @@ function gal
     echo "[ERROR] File or directory '$path' does not exist."
     return 1
   end
-  
-  git add "$path"
-  git commit -m "$argv"
-  git push
+
+  set gal_script "$HOME/custom_scripts/git_all"
+  if test -f  $gal_script
+    bash $gal_script "$argv"
+  else
+    git add "$path"
+    git commit -m "$argv"
+    git push
+  end
 end
 
 function glol
