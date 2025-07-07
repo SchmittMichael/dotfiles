@@ -1,0 +1,12 @@
+[terminal]
+shell.program = "wsl"
+shell.args = ["~"]
+
+# tmux fix
+[[keyboard.bindings]]
+chars = "\u0000"
+key = "Space"
+mods = "Control"
+
+[font]
+size = 10
