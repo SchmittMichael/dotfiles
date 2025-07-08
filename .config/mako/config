@@ -1,0 +1,54 @@
+font=Fira Sans Mono 12
+background-color=#2e3440
+text-color=#d8dee9
+border-color=#4c566a
+border-radius=8
+padding=12
+max-icon-size=64
+default-timeout=6000
+layer=overlay
+sort=-time
+
+on-button-left=invoke-default-action
+on-button-middle=dismiss-group
+on-button-right=dismiss
+on-touch=invoke-default-action
+
+[urgency=low]
+background-color=#3b4252
+text-color=#d8dee9
+border-color=#4c566a
+default-timeout=4000
+
+[urgency=normal]
+background-color=#434c5e
+text-color=#eceff4
+border-color=#4c566a
+default-timeout=5000
+
+[urgency=critical]
+background-color=#bf616a
+text-color=#eceff4
+border-color=#bf616a
+default-timeout=6000
+
+[mode=dark]
+background-color=#2e3440
+text-color=#d8dee9
+border-color=#4c566a
+
+[mode=dark urgency=low]
+background-color=#3b4252
+text-color=#d8dee9
+border-color=#4c566a
+
+[mode=dark urgency=normal]
+background-color=#434c5e
+text-color=#eceff4
+border-color=#4c566a
+
+[mode=dark urgency=critical]
+background-color=#bf616a
+text-color=#eceff4
+border-color=#bf616a
+
