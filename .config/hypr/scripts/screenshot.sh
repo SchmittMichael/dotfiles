@@ -10,8 +10,7 @@ if [ -d "$SCREENSHOT_DIR" ]; then
 fi
 
 if [[ "$1" != "active" && "$1" != "screen" && "$1" != "area" ]]; then
-  notify-send "ARGUMENT: $1"
-  echo "Invalid argmument!"
+  echo "Invalid argmument. '$1'"
   exit 1
 fi
 
