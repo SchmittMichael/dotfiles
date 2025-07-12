@@ -14,4 +14,4 @@ if [[ "$1" != "active" && "$1" != "screen" && "$1" != "area" ]]; then
   exit 1
 fi
 
-grimblast --notify copysave "$1" "$SCREENSHOT_PATH"
+grimblast --freeze --notify copysave "$1" "$SCREENSHOT_PATH"
