@@ -2,7 +2,6 @@
 @define-color red      #F7768E;  /* Soft red for contrast/warnings */
 @define-color lavender #9ABDF5;  /* Light lavender-blue */
 @define-color text     #CDD6F4;  /* Very light blue-gray for readable text */
-/* @define-color background     #1E1E2E;  /* Very light blue-gray for readable text */ */
 @keyframes fadeIn {
     0% {
     }
@@ -23,14 +22,13 @@ window {
     padding: 20px;
     outline: none;
     background-color: #1E1E2E;
-    /* background-color: alpha(@background,.5); */
 }
 #inner-box {
     margin: 2px;
-    padding: 5px
+    padding: 5px;
     border: none;
 }
-#outer-box {    
+#outer-box {
     border: 1px solid #7AA2F7;    /* Optional: add a border */
     border-radius: 8px;           /* This makes the corners rounded */
 }
@@ -49,7 +47,7 @@ window {
     outline: none;
     color: @text;
     box-shadow: 1px 1px 5px rgba(0,0,0, .5);
-    border-radius:10;
+    border-radius:10px;
     background-color: alpha(@background,.2);
 }
 #input image {
@@ -66,7 +64,7 @@ window {
     outline: none;
     border: none;
 
-    border-radius:10;
+    border-radius:10px;
 }
 #text {
     margin: 5px;
@@ -100,5 +98,5 @@ window {
     color: @mauve;
 }
 #entry:drop(active) {
-    background-color: @lavender !important;
+    background-color: @lavender;
 }

@@ -10,3 +10,7 @@ print_command=true
 insensitive=true
 columns=1
 no_actions=true
+key_up=Up,Ctrl-k
+key_down=Down,Ctrl-j
+key_right=Right,Ctrl-l
+key_left=Right,Ctrl-h
