@@ -7,6 +7,7 @@ general.import = [
 [window]
 decorations = "none"
 startup_mode =  "Maximized"
+opacity = 0.85
 
 [font]
 normal = { family = "Hack Nerd Font" }
