@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEMPERATURE=5000
+TEMPERATURE=4000
 STATE_DIR="$HOME/.local/state/bluelighttoggle"
 STATE_FILE="$STATE_DIR/ACTIVE"
 PID=$(pgrep -x hyprsunset)

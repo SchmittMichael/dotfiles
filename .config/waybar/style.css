@@ -1,127 +1,154 @@
+@define-color background 	    rgba(15, 27, 53, 0.9);
+@define-color font-color      #c9ccce;
+@define-color active-workspace #61afef;
+@define-color hover rgba(58, 62, 75, 0.9);
+
 * {
-  font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid";
+  font-family: "SourceCodePro Nerd Font";
   font-weight: bold;
   font-size: 16px;
-  color: #dcdfe1;
+  color: @font-color;
 }
 
 #waybar {
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  box-shadow: none;
+  background-color: transparent;
+}
+
+#custom-power,
+#custom-reboot,
+#custom-sleep,
+#clock,
+#tray,
+#language,
+#custom-nightlight,
+#network,
+#memory,
+#custom-gpu,
+#temperature,
+#cpu,
+#custom-notification {
+  padding: 0 10px 0 10px;
+  background-color: @background;
+  transition:
+    background-color 0.5s ease,
+    color 0.5s ease;
+}
+
+/* #network, */
+#memory,
+#custom-gpu,
+#cpu,
+#temperature {
+    min-width: 55px;
+}
+
+#tray:hover,
+#clock:hover,
+#language:hover,
+#custom-nightlight:hover, 
+#network:hover,
+#memory:hover,
+#custom-gpu:hover,
+#cpu:hover,
+#temperature:hover,
+#custom-notification:hover {
+  /* background-color: @hover; */
+  color: white;
 }
 
 #workspaces,
-#window,
-#tray{
-  background-color: rgba(15,27,53,0.9);
-  padding: 4px 6px;
-  margin-top: 6px;
-  margin-left: 6px;
-  margin-right: 6px;
-  border-radius: 10px;
-  border-width: 0px;
-}
-
 #clock,
-#custom-sleep{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  margin-right: 6px;
-  padding: 4px 2px;
-  border-radius: 0 10px 10px 0;
-  border-width: 0px;
-}
-
-/* border  */
-/* #network, */
-#custom-placeholder,
-#custom-lock{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  margin-left: 6px;
-  padding: 4px 2px;
-  border-radius: 10px 0 0 10px;
-  border-width: 0px;
-}
-
-/* ellipsis fix */
-#language {
-    min-width: 30px;
-}
-
-#custom-reboot,
-#custom-power,
-#network,
-#language,
-/* #bluetooth, */
-/* #battery, */
-#pulseaudio,
-#custom-temperature,
-#custom-nightlight,
-#memory,
-#cpu{
-  background-color: rgba(15,27,53,0.9);
-  margin-top: 6px;
-  padding: 4px 2px;
-  border-width: 0px;
-}
-
-#custpm-temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
-/* #bluetooth:hover, */
-#network:hover,
-/* #backlight:hover, */
-/* #battery:hover, */
-#pulseaudio:hover,
-#language:hover,
-#custom-temperature:hover,
-#memory:hover,
-#cpu:hover,
-#clock:hover,
-#custom-lock:hover,
-#custom-placeholder:hover,
-#custom-power:hover,
-#custom-reboot:hover,
-#custom-sleep:hover,
-#custom-nightlight:hover,
-#window:hover {
-  background-color: rgba(70, 75, 90, 0.9);
-}
-
-#workspaces button:hover{
-  background-color: rgba(97, 175, 239, 0.2);
-  padding: 2px 8px;
-  margin: 0 2px;
+#tray,
+#custom-notification {
   border-radius: 10px;
+  margin-right: 5px;
+}
+
+#workspaces {
+  background-color: @background;
+  margin-left: 5px;
+}
+
+#custom-notification {
+  padding: 0;
+  min-width: 35px;
+  margin-left: 10px;
+}
+
+#custom-power,
+#language,
+#network {
+  margin-left: 10px;
+  border-radius: 10px 0 0 10px;
+}
+
+#custom-sleep,
+#custom-nightlight,
+#temperature {
+  border-radius: 0 10px 10px 0;
+}
+
+#custom-power:hover {
+  color: #e34b4b;
+}
+
+#custom-reboot:hover {
+  color: #E69138;
+}
+
+#custom-sleep:hover {
+  color: #4a90b5;
+}
+
+#network {
+  padding-left: 15px;
+  color: #a3b9c9;
+}
+
+#network:hover {
+  color: #70b8e0;
+}
+
+#memory {
+  color: #b2c8b2;
+}
+
+#memory:hover {
+  color: #82c982;
+}
+
+#custom-gpu {
+  color: #e4b8b8;
+}
+
+#custom-gpu:hover {
+  color: #f05555;
+}
+
+#cpu {
+  color: #d8c1a3;
+}
+
+#cpu:hover {
+  color: #e8a04d;
+}
+
+#temperature {
+  color: #c7b2c8;
+}
+
+#temperature:hover {
+  color: #d182d8;
+}
+
+#temperature.critical {
+  color: red;
+}
+
+#workspaces button:hover {
+  background-color: alpha(@active-workspace, 0.2);
 }
 
 #workspaces button.active {
-  background-color: #61afef;
-  color: #ffffff;
-  padding: 2px 8px;
-  margin: 0 2px;
-  border-radius: 10px;
-}
-
-#workspaces button {
-  background: transparent;
-  border: none;
-  color: #888888;
-  padding: 2px 8px;
-  margin: 0 2px;
-  font-weight: bold;
-}
-
-#window {
-  font-weight: 500;
-  font-style: italic;
-}
-
-window#waybar.empty #window {
-  background: transparent;
+  background-color: @active-workspace;
 }
