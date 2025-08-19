@@ -1,16 +1,18 @@
-[config]
+# style
 allow_images=true
-width=500
-show=drun
-prompt=Search
-height=400
-term=alacritty
 hide_scroll=true
-print_command=true
+prompt=Search
+width=500
+# hight=400
+
+# settings
+term=alacritty
 insensitive=true
-columns=1
-no_actions=true
+no_actions=true # maybe turn off
+
+# movement keys
 key_up=Up,Ctrl-k
 key_down=Down,Ctrl-j
 key_right=Right,Ctrl-l
 key_left=Right,Ctrl-h
+key_expand=Ctrl-Return

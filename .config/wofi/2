@@ -13,13 +13,14 @@
 @define-color text-dim      #B9D2C5; /* secondary text */
 @define-color urgent        #FF6464; /* fallback warn */
 
-@define-color background 	    rgba(15, 27, 53, 0.95);
+@define-color background 	    rgba(15, 27, 53, 0.9);
 @define-color font-color      #c9ccce;
 @define-color active-workspace #61afef;
+@define-color hover rgba(58, 62, 75, 0.9);
 
 * {
   font-family: "Adwaita Sans", "JetBrainsMono Nerd Font";
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -27,7 +28,7 @@
 #window {
   background-color: @background;
   border: 2px solid @active-workspace;
-  border-radius: 20px;
+  border-radius: 14px;
   padding: 8px;
   margin: 8px;
   /* modest drop shadow (GTK supports box-shadow) */
@@ -37,12 +38,11 @@
 /* ---- Layout boxes ---- */
 #outer-box {
   margin: 6px;
-  padding: 6px;
 }
 
 #inner-box {
   border-radius: 10px;
-  padding: 8px;
+  padding: 6px;
 }
 
 #scroll {
@@ -51,33 +51,27 @@
 
 /* ---- Search input ---- */
 #input {
-  background-color: rgba(96, 150, 210, 0.08); /* faint blue tint */
-  border: 1px solid rgba(97, 175, 239, 0.4); /* soft blue border */
-  color: @font-color;
-  padding: 6px 10px;
-  border-radius: 6px;
-
+  background: @bg-alt;
+  color: @text;
+  caret-color: @accent;
+  border: 1px solid alpha(@border, 0.8);
   border-radius: 10px;
+  padding: 10px 12px;
   margin: 2px 2px 6px 2px;
   box-shadow: inset 0 0 0 1px alpha(#000, 0.05);
 }
 
 #input:focus {
-  background-color: rgba(97, 175, 239, 0.12);
-  color: white;
-  border: 1px solid @active-workspace;
-  box-shadow: 0 0 6px rgba(97, 175, 239, 0.5);
+  border-color: @accent;
+  box-shadow:
+    inset 0 0 0 1px alpha(@accent, 0.35),
+    0 0 0 2px alpha(@accent, 0.18);
 }
 
 #entry {
-  border: 1px solid transparent;
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: 8px;
+  padding: 8px 10px;
   margin: 2px 0;
-  transition:
-    background-color 0.5s ease,
-    color 0.5s ease,
-    border-color 0.5s ease;
 }
 
 #entry:selected {
@@ -91,6 +85,8 @@
   margin-right: 8px;
   min-width: 24px;
   min-height: 24px;
+  -gtk-icon-transform: scale(1);
+  color: @accent;
 }
 
 #text {
@@ -98,8 +94,8 @@
 }
 
 #entry:selected #text {
-  color: #dde4eb;
-  /* font-weight: bolder; */
+  color: @white;
+  font-weight: bolder;
 }
 
 #selected {
@@ -108,8 +104,4 @@
 
 #expander-box {
   background-color: transparent;
-}
-
-#expander-box #entry {
-  background-color: alpha(@active-workspace, 0.1);
 }
