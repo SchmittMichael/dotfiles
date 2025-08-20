@@ -1,18 +1,3 @@
-/**********************
- * wofi GTK CSS theme *
- * subtle transparent green + aquamarine accents
- **********************/
-
-/* ---- Color palette ---- */
-@define-color bg            rgba(10, 18, 14, 0.86); /* main window background */
-@define-color bg-alt        rgba(16, 26, 21, 0.66); /* rows / input background */
-@define-color surface       rgba(20, 32, 27, 0.85); /* selected/hover surface */
-@define-color border        rgba(127, 255, 212, 0.55); /* aquamarine border */
-@define-color accent        #7FFFD4; /* aquamarine */
-@define-color text          #EAF7F0; /* primary text */
-@define-color text-dim      #B9D2C5; /* secondary text */
-@define-color urgent        #FF6464; /* fallback warn */
-
 @define-color background 	    rgba(15, 27, 53, 0.95);
 @define-color font-color      #c9ccce;
 @define-color active-workspace #61afef;
@@ -23,18 +8,15 @@
   font-weight: bold;
 }
 
-/* ---- Root window ---- */
 #window {
   background-color: @background;
   border: 2px solid @active-workspace;
   border-radius: 20px;
   padding: 8px;
   margin: 8px;
-  /* modest drop shadow (GTK supports box-shadow) */
   color: @font-color;
 }
 
-/* ---- Layout boxes ---- */
 #outer-box {
   margin: 6px;
   padding: 6px;
@@ -49,7 +31,6 @@
   margin-top: 6px;
 }
 
-/* ---- Search input ---- */
 #input {
   background-color: rgba(96, 150, 210, 0.08); /* faint blue tint */
   border: 1px solid rgba(97, 175, 239, 0.4); /* soft blue border */
@@ -99,11 +80,6 @@
 
 #entry:selected #text {
   color: #dde4eb;
-  /* font-weight: bolder; */
-}
-
-#selected {
-  /* background-color: pink; */
 }
 
 #expander-box {
