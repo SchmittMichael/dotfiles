@@ -17,7 +17,7 @@ vram_i=$(printf "%.0f" "$vram")
 tooltip="Load: ${use_i}%
 Temp: ${temp_i}°C
 Power: ${pwr_i} W
-VRAM: $vram_i}%"
+VRAM: ${vram_i}%"
 
 jq -nMc \
   --arg text "${use_i}" \

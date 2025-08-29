@@ -58,7 +58,7 @@
     "escape": true,
   },
   "custom/power": {
-    "format": " ",
+    "format": "⏻ ",
     "on-click": "systemctl poweroff",
     "tooltip": true,
     "tooltip-format": "Shutdown",
@@ -85,9 +85,11 @@
   },
   "network": {
     "format-wifi": "󰤨  {signalStrength}%",
-    "tooltip-format": "󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
+    "tooltip-format": "Ethernet: 󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
     "tooltip-format-wifi": "{essid}:  󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
+    "tooltip-format-disconnected": "No Wifi or Ethernet",
     "format-ethernet": "󰌗 ",
+    // "format-ethernet": "󰌗  󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
     "format-linked": "󰌚 ",
     "format-disconnected": "󰌙 ",
     "interval": 2,

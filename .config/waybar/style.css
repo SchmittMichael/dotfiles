@@ -4,7 +4,7 @@
 @define-color hover rgba(58, 62, 75, 0.9);
 
 * {
-  font-family: "SourceCodePro Nerd Font";
+  /* font-family: "Adwaita Sans", "JetBrainsMono Nerd Font"; */
   font-weight: bold;
   font-size: 16px;
   color: @font-color;
@@ -39,13 +39,13 @@
 #custom-gpu,
 #cpu,
 #temperature {
-    min-width: 55px;
+  min-width: 55px;
 }
 
 #tray:hover,
 #clock:hover,
 #language:hover,
-#custom-nightlight:hover, 
+#custom-nightlight:hover,
 #network:hover,
 #memory:hover,
 #custom-gpu:hover,
@@ -93,7 +93,7 @@
 }
 
 #custom-reboot:hover {
-  color: #E69138;
+  color: #e69138;
 }
 
 #custom-sleep:hover {
@@ -103,6 +103,23 @@
 #network {
   padding-left: 15px;
   color: #a3b9c9;
+  animation: none;
+}
+
+#network.disconnected {
+  animation: pulse 4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    color: #a3b9c9;
+  }
+  50% {
+    color: red;
+  }
+  100% {
+    color: #a3b9c9;
+  }
 }
 
 #network:hover {
