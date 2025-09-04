@@ -24,7 +24,7 @@
 #network,
 #memory,
 #custom-gpu,
-#temperature,
+#custom-temperature,
 #cpu,
 #custom-notification {
   padding: 0 10px 0 10px;
@@ -38,7 +38,7 @@
 #memory,
 #custom-gpu,
 #cpu,
-#temperature {
+#custom-temperature {
   min-width: 55px;
 }
 
@@ -50,7 +50,7 @@
 #memory:hover,
 #custom-gpu:hover,
 #cpu:hover,
-#temperature:hover,
+#custom-temperature:hover,
 #custom-notification:hover {
   /* background-color: @hover; */
   color: white;
@@ -84,7 +84,7 @@
 
 #custom-sleep,
 #custom-nightlight,
-#temperature {
+#custom-temperature {
   border-radius: 0 10px 10px 0;
 }
 
@@ -150,16 +150,12 @@
   color: #e8a04d;
 }
 
-#temperature {
+#custom-temperature {
   color: #c7b2c8;
 }
 
-#temperature:hover {
+#custom-temperature:hover {
   color: #d182d8;
-}
-
-#temperature.critical {
-  color: red;
 }
 
 #workspaces button:hover {

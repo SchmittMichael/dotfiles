@@ -18,7 +18,7 @@
     "memory",
     "custom/gpu",
     "cpu",
-    "temperature",
+    "custom/temperature",
     "custom/notification",
   ],
   "hyprland/workspaces": {
@@ -92,7 +92,13 @@
     // "format-ethernet": "󰌗  󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
     "format-linked": "󰌚 ",
     "format-disconnected": "󰌙 ",
-    "interval": 2,
+    "interval": 3,
+  },
+  "custom/temperature": {
+    "format": "{}°C",
+    "exec": "sensors | grep 'Tctl' | awk '{print int($2)}'",
+    "interval": 3,
+    "tooltip-format": "Current CPU temperature",
   },
   "temperature": {
     "format": "{temperatureC}°C",
@@ -103,14 +109,14 @@
     "tooltip-format": "Current RAM usage (Total {total:0.1f}GB)",
   },
   "cpu": {
-    "interval": 2,
+    "interval": 3,
     "format": "  {usage}%",
     "tooltip-format": "Current CPU usage",
   },
   "custom/gpu": {
     "exec": "$HOME/.config/waybar/scripts/gpuinfo.sh",
     "return-type": "json",
-    "interval": 2,
+    "interval": 3,
     "format": "<span font='Material Icons' size='20000' rise='-3000'>󰾲\u2009</span> {text}%",
   },
   "clock": {
