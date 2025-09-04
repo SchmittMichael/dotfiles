@@ -1,0 +1,31 @@
+source ~/.vimrc
+
+set clipboard=unnamed
+
+" Plugins
+Plug 'tpope/vim-commentary'
+
+" Intellisense
+nmap <leader>gr :action FindUsages<CR>
+nmap <leader>rn :action RenameElement<CR>
+nmap <leader>ff :action GotoFile<CR>
+nmap <leader>fg :action FindInPath<CR>
+nmap <leader>gf :action CodeCleanup<CR>
+nmap <leader>gf :action OptimizeImports<CR> <bar> :action ReformatCode<CR>
+nmap <leader>fc :action GotoClass<CR>
+
+" line moving
+map <A-j> :action MoveLineDown<CR>
+map <A-k> :action MoveLineUp<CR>
+vmap <A-j> :action MoveLineDown<CR>
+vmap <A-k> :action MoveLineUp<CR>
+
+" statement moving
+map <C-A-j> :action MoveStatementDown<CR>
+map <C-A-k> :action MoveStatementUp<CR>
+
+" Git tooling
+nmap <leader>ghb :action Annotate<CR>
+nmap <leader>ghr :action Vcs.RollbackChangedLines<CR>
+nmap ]h :action VcsShowNextChangeMarker<CR>
+nmap [h :action VcsShowPrevChangeMarker<CR>
