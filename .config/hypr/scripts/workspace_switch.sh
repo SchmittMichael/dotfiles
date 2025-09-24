@@ -1,7 +1,7 @@
 #!/bin/bash
 
-WSA=$(hyprctl monitors | grep -A 6 "$MONITOR1" | grep "active workspace" | awk '{print $3}')
-WSB=$(hyprctl monitors | grep -A 6 "$MONITOR2" | grep "active workspace" | awk '{print $3}')
+WSA=$(hyprctl monitors | grep -A 7 "$MONITOR1" | grep "active workspace" | awk '{print $3}')
+WSB=$(hyprctl monitors | grep -A 7 "$MONITOR2" | grep "active workspace" | awk '{print $3}')
 
 WINDOWS=$(hyprctl clients -j)
 
