@@ -4,7 +4,7 @@
 @define-color hover rgba(58, 62, 75, 0.9);
 
 * {
-  /* font-family: "Adwaita Sans", "JetBrainsMono Nerd Font"; */
+  font-family: "Adwaita Sans", "JetBrainsMono Nerd Font";
   font-weight: bold;
   font-size: 16px;
   color: @font-color;
