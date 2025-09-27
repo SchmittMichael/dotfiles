@@ -14,5 +14,5 @@ no_actions=true # maybe turn off
 key_up=Up,Ctrl-k
 key_down=Down,Ctrl-j
 key_right=Right,Ctrl-l
-key_left=Right,Ctrl-h
+key_left=Left,Ctrl-h
 key_expand=Ctrl-Return

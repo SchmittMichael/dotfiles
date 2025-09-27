@@ -1,6 +1,6 @@
 function __update_arch
   echo "Updating pacman..."
-  sudo pacman -Syu
+  sudo pacman -Syu --noconfirm
 
   echo "Updating yay..."
   yay
