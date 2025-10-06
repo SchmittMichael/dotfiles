@@ -122,6 +122,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source "${HOME}/.profile"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -155,7 +157,6 @@ alias lh='eza -dl .* --group-directories-first'
 alias lt='eza -al --sort=modified'
 
 ## work related
-source "${HOME}/.profile"
 alias "'z ansible'='cd ~/workspace/ansible'"
 alias rn='run-it'
 alias mongodocker='mongosh --port 17027 -u root -p password --authenticationDatabase admin uat'
