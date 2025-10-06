@@ -2,3 +2,10 @@
 functions/*
 !functions/custom
 !functions/fish_user_key_bindings.fish
+
+# ignore variables
+fish_variables
+
+# plugin specific stuff
+_tide*
+conf.d/git.fish

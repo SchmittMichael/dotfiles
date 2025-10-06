@@ -1,18 +1,22 @@
-if not type -q fisher
-  source ../fisher_init.fish
+function __source
+  if type -q "$argv"
+    $argv | source
+  end
 end
 
-
-function __source
-    # Using type instead of command allows for functions too
-    if type -q $argv[1]
-        $argv | source
-    end
+if not type -q fisher
+  echo "[WARNING]: Detected that 'fisher' isn't installed. Assuming fish isn't properly set up. Run 'fisher-init' to complete setup."
 end
 
 # loading .profile
-bass source ~/.profile; or echo "Couldn't load `.profile`, bass isn't installed..."
+if type -q bass
+  bass source "$HOME/.profile"
+else
+  echo "[ERROR]: Couldn't load $HOME/.profile, 'bass' isn't installed..."
+end
 
 # some sourcing
 __source zoxide init fish 
+__source fzf --fish
+
 functions -e __source
