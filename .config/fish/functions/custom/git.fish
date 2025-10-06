@@ -28,7 +28,3 @@ function gal
     git push
   end
 end
-
-function glol
-  git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"
-end
