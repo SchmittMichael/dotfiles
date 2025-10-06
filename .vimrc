@@ -20,6 +20,7 @@ set scrolloff=8
 
 " split
 set splitright
+set splitbelow
 
 " custom shortcuts
 command! Q qa!
