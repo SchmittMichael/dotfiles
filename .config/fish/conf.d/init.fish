@@ -1,5 +1,5 @@
 function __source
-  if type -q "$argv"
+  if type -q $argv[1]
     $argv | source
   end
 end
