@@ -69,25 +69,21 @@
   "custom/power": {
     "format": "⏻ ",
     "on-click": "systemctl poweroff",
-    "tooltip": true,
     "tooltip-format": "Shutdown",
   },
   "custom/reboot": {
     "format": " ",
     "on-click": "systemctl reboot",
-    "tooltip": true,
     "tooltip-format": "Reboot",
   },
   "custom/sleep": {
     "format": " ",
     "on-click": "systemctl sleep",
-    "tooltip": true,
     "tooltip-format": "Sleep",
   },
   "custom/nightlight": {
     "format": "{} ",
     "exec": "$HOME/.config/waybar/scripts/bluelighttoggle.sh info",
-    "tooltip": true,
     "interval": 1,
     "return-type": "json",
     "on-click": "$HOME/.config/waybar/scripts/bluelighttoggle.sh toggle",
