@@ -6,15 +6,17 @@ STATE_FILE="$STATE_DIR/ACTIVE"
 PID=$(pgrep -x hyprsunset)
 
 get_info() {
+  local alt tooltip
+
   if [ -z "$PID" ]; then
-    local tooltip="Enable nightlight"
-    local icon="󰃞"
+    tooltip="Enable nightlight"
+    alt="disabled"
   else
-    local tooltip="Disable nightlight"
-    local icon="󰃝"
+    tooltip="Disable nightlight"
+    alt="enabled"
   fi
 
-  echo "{\"text\": \"$icon\", \"tooltip\": \"$tooltip\"}"
+  printf '{"alt": "%s", "tooltip": "%s"}' "$alt" "$tooltip"
 }
 
 enable_bluelight() {

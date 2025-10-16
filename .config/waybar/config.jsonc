@@ -82,7 +82,11 @@
     "tooltip-format": "Sleep",
   },
   "custom/nightlight": {
-    "format": "{} ",
+    "format": "{icon} ",
+    "format-icons": {
+      "enabled": "󰃝\u2009",
+      "disabled": "󰃞\u2009",
+    },
     "exec": "$HOME/.config/waybar/scripts/bluelighttoggle.sh info",
     "interval": 1,
     "return-type": "json",
@@ -94,7 +98,6 @@
     "tooltip-format-wifi": "{essid}:  󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
     "tooltip-format-disconnected": "No Wifi or Ethernet",
     "format-ethernet": "󰌗 ",
-    // "format-ethernet": "󰌗  󰅧  {bandwidthUpBytes} | 󰅢  {bandwidthDownBytes}",
     "format-linked": "󰌚 ",
     "format-disconnected": "󰌙 ",
     "interval": 3,
