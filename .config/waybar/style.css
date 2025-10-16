@@ -20,6 +20,7 @@
 #clock,
 #tray,
 #language,
+#wireplumber,
 #custom-nightlight,
 #network,
 #memory,
@@ -40,11 +41,13 @@
 #cpu,
 #custom-temperature {
   min-width: 55px;
+  padding: 0 10px 0 10px;
 }
 
 #tray:hover,
 #clock:hover,
 #language:hover,
+#wireplumber:hover,
 #custom-nightlight:hover,
 #network:hover,
 #memory:hover,

@@ -5,6 +5,7 @@
   "relaod_style_on_change": true,
   "modules-left": [
     "hyprland/workspaces",
+
     "custom/power",
     "custom/reboot",
     "custom/sleep",
@@ -12,8 +13,11 @@
   "modules-center": ["clock"],
   "modules-right": [
     "tray",
+
     "hyprland/language",
+    "wireplumber",
     "custom/nightlight",
+
     "network",
     "memory",
     "custom/gpu",
@@ -34,8 +38,13 @@
   "hyprland/language": {
     "format": "{short}",
     "on-click": "hyprctl switchxkblayout hp,-inc-hyperx-alloy-elite-2 next",
-    "tooltip": true,
-    "tooltip-format": "Keyboard layout",
+  },
+  "wireplumber": {
+    "format": "{icon}",
+    "tooltip-format": "{volume}%",
+    "format-muted": "\u2009",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "format-icons": ["\u2009", "\u2009"],
   },
   "custom/notification": {
     "tooltip": false,
