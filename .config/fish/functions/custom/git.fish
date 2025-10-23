@@ -48,3 +48,27 @@ end
 function git_current_branch
   git branch --show-current
 end
+
+function gcom
+  git checkout (git_main_branch)
+end
+
+function gmom
+  git merge origin/(git_main_branch)
+end
+
+function gmum
+  git merge upstream/(git_main_branch)
+end
+
+function groh
+  git reset origin/(git_current_branch) --hard
+end
+
+function gtl --description 'List Git tags sorted by version, optionally filtered by prefix'
+    set pattern "*"
+    if test (count $argv) -gt 0
+        set pattern "$argv[1]*"
+    end
+    git tag --sort=-v:refname -n --list $pattern
+end
