@@ -3,11 +3,9 @@ alias d='docker'
 alias n='nvim'
 alias gs='git stash'
 alias gsp='git stash pop'
-alias suod='sudo'
-alias saup='sudo apt update'
-alias saug='sudo apt upgrade -y'
-alias off='poweroff'
 alias py='python3'
+alias md='mkdir -p'
+alias ghpr='gh pr view --web'
 
 # eza
 alias l='eza -la'
@@ -20,10 +18,11 @@ alias lh='eza -dl .* --group-directories-first'
 alias lt='eza -al --sort=modified'
 
 # git alias
+source "$HOME/.config/fish/functions/custom/git.fish"
+
 alias g=git
 alias ga='git add'
 alias gaa='git add --all'
-alias gal='~/custom_scripts/git_all'
 alias gam='git am'
 alias gama='git am --abort'
 alias gamc='git am --continue'
@@ -70,8 +69,8 @@ alias gcfu='git commit --fixup'
 alias gcl='git clone --recurse-submodules'
 alias gclean='git clean --interactive -d'
 alias gclf='git clone --recursive --shallow-submodules --filter=blob:none --also-filter-submodules'
-alias gcm='git checkout $(git_main_branch)'
-alias gcmsg='git commit --message'
+alias gcom="git checkout $(git_main_branch)"
+alias gcm='git commit --message'
 alias gcn='git commit --verbose --no-edit'
 alias 'gcn!'='git commit --verbose --no-edit --amend'
 alias gco='git checkout'
@@ -98,13 +97,13 @@ alias gfg='git ls-files | grep'
 alias gfo='git fetch origin'
 alias gg='git gui citool'
 alias gga='git gui citool --amend'
-alias ggpull='git pull origin "$(git_current_branch)"'
-alias ggpush='git push origin "$(git_current_branch)"'
-alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias ggpull="git pull origin '$(git_current_branch)'"
+alias ggpush="git push origin '$(git_current_branch)'"
+alias ggsup="git branch --set-upstream-to=origin/$(git_current_branch)"
 alias ghh='git help'
 alias gignore='git update-index --assume-unchanged'
 alias gignored='git ls-files -v | grep "^[[:lower:]]"'
-alias git-svn-dcommit-push='git svn dcommit && git push github $(git_main_branch):svntrunk'
+alias git-svn-dcommit-push="git svn dcommit && git push github $(git_main_branch):svntrunk"
 alias gk='\gitk --all --branches &!'
 alias gke='\gitk --all $(git log --walk-reflogs --pretty=%h) &!'
 alias gl='git pull'
@@ -122,17 +121,17 @@ alias glol='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgre
 alias glola='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --all'
 alias glols='git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset" --stat'
 alias glp=_git_log_prettily
-alias gluc='git pull upstream $(git_current_branch)'
-alias glum='git pull upstream $(git_main_branch)'
+alias gluc="git pull upstream $(git_current_branch)"
+alias glum="git pull upstream $(git_main_branch)"
 alias gm='git merge'
 alias gma='git merge --abort'
 alias gmc='git merge --continue'
 alias gmff='git merge --ff-only'
-alias gmom='git merge origin/$(git_main_branch)'
+alias gmom="git merge origin/$(git_main_branch)"
 alias gms='git merge --squash'
 alias gmtl='git mergetool --no-prompt'
 alias gmtlvim='git mergetool --no-prompt --tool=vimdiff'
-alias gmum='git merge upstream/$(git_main_branch)'
+alias gmum="git merge upstream/$(git_main_branch)"
 alias gp='git push'
 alias gpd='git push --dry-run'
 alias gpf='git push --force-with-lease --force-if-includes'
@@ -143,13 +142,13 @@ alias gpr='git pull --rebase'
 alias gpra='git pull --rebase --autostash'
 alias gprav='git pull --rebase --autostash -v'
 alias gpristine='git reset --hard && git clean --force -dfx'
-alias gprom='git pull --rebase origin $(git_main_branch)'
-alias gpromi='git pull --rebase=interactive origin $(git_main_branch)'
-alias gprum='git pull --rebase upstream $(git_main_branch)'
-alias gprumi='git pull --rebase=interactive upstream $(git_main_branch)'
+alias gprom="git pull --rebase origin $(git_main_branch)"
+alias gpromi="git pull --rebase=interactive origin $(git_main_branch)"
+alias gprum="git pull --rebase upstream $(git_main_branch)"
+alias gprumi="git pull --rebase=interactive upstream $(git_main_branch)"
 alias gprv='git pull --rebase -v'
-alias gpsup='git push --set-upstream origin $(git_current_branch)'
-alias gpsupf='git push --set-upstream origin $(git_current_branch) --force-with-lease --force-if-includes'
+alias gpsup="git push --set-upstream origin $(git_current_branch)"
+alias gpsupf="git push --set-upstream origin $(git_current_branch) --force-with-lease --force-if-includes"
 alias gpu='git push upstream'
 alias gpv='git push --verbose'
 alias gr='git remote'
@@ -159,12 +158,12 @@ alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbd='git rebase $(git_develop_branch)'
 alias grbi='git rebase --interactive'
-alias grbm='git rebase $(git_main_branch)'
+alias grbm="git rebase $(git_main_branch)"
 alias grbo='git rebase --onto'
-alias grbom='git rebase origin/$(git_main_branch)'
+alias grbom="git rebase origin/$(git_main_branch)"
 alias grbs='git rebase --skip'
-alias grbum='git rebase upstream/$(git_main_branch)'
-alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}'
+alias grbum="git rebase upstream/$(git_main_branch)"
+# alias grep='grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn,.idea,.tox,.venv,venv}'
 alias grev='git revert'
 alias greva='git revert --abort'
 alias grevc='git revert --continue'
@@ -176,7 +175,7 @@ alias grhs='git reset --soft'
 alias grm='git rm'
 alias grmc='git rm --cached'
 alias grmv='git remote rename'
-alias groh='git reset origin/$(git_current_branch) --hard'
+alias groh="git reset origin/$(git_current_branch) --hard"
 alias grrm='git remote remove'
 alias grs='git restore'
 alias grset='git remote set-url'
@@ -208,7 +207,7 @@ alias gsu='git submodule update'
 alias gsw='git switch'
 alias gswc='git switch --create'
 alias gswd='git switch $(git_develop_branch)'
-alias gswm='git switch $(git_main_branch)'
+alias gswm="git switch $(git_main_branch)"
 alias gta='git tag --annotate'
 alias gts='git tag --sign'
 alias gtv='git tag | sort -V'
@@ -230,9 +229,6 @@ function gtl --description 'List Git tags sorted by version, optionally filtered
     git tag --sort=-v:refname -n --list $pattern
 end
 
-# misc
-alias md='mkdir -p'
-
 # work related
 if cat /etc/passwd | grep anevis-admin > /dev/null
     alias "'z ansible'='cd ~/workspace/ansible'"
@@ -241,6 +237,5 @@ if cat /etc/passwd | grep anevis-admin > /dev/null
     alias serv='anevis-services'
     alias pgtop='sudo -u postgres pg_top'
     alias doceng='cd /srv/documentengine'
-    alias ghpr='gh pr view --web'
     alias print-mq='sudo /opt/apache/activemq/bin/activemq dstat queues | tail -n +14'
 end
