@@ -31,7 +31,6 @@ get_art_url() {
   local art_url=$(playerctl -p "$player" metadata mpris:artUrl)
 
   if [[ "$art_url" == http* ]]; then
-    sleep 0.1
     curl -sL "$art_url" -o "$THUMBNAIL_FILE"
     echo "$THUMBNAIL_FILE"
   elif [[ "$art_url" == file* ]]; then
