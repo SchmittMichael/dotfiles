@@ -50,9 +50,9 @@ notify_user() {
 
   local artist=$(playerctl -p "$player" metadata artist)
   local title=$(playerctl -p "$player" metadata title)
-  local status=$(playerctl -p "$player" status)
   local icon=$(get_icon "$player")
   local cover_art=$(get_art_url)
+  local status=$(playerctl -p "$player" status)
 
   notify-send -e \
     -h string:x-canonical-private-synchronous:mpris \
