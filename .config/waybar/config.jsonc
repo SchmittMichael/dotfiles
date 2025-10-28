@@ -41,9 +41,10 @@
   },
   "wireplumber": {
     "format": "{icon}",
-    "tooltip-format": "{volume}%",
+    "tooltip-format": "{volume}% ({node_name})",
     "format-muted": "\u2009",
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
     "format-icons": ["\u2009", "\u2009"],
   },
   "custom/notification": {
