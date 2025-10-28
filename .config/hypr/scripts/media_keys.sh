@@ -70,8 +70,7 @@ get_current_player() {
   elif [[ -f "$STATE_FIlE" ]]; then
     cat "$STATE_FIlE"
   else
-    echo "Illegal State, no player found."
-    exit 1
+    playerctl -l | head -n1
   fi
 }
 
