@@ -133,7 +133,7 @@
     "format": "  {:L%H:%M} ",
     "timezone": "Europe/Berlin",
     "format-alt": "{:L%A, %d. %B %Y (%H:%M)}",
-    "tooltip-format": "{calendar}",
+    "tooltip-format": "<span font='JetBrainsMono Nerd Font'>{calendar}</span>",
     "locale": "de_DE.utf8",
     "calendar": {
       "mode": "month",
