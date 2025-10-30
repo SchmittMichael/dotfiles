@@ -2,7 +2,8 @@
 
 set -e
 
-IRRELEVANT_DIRS=(hypr mako swaync waybar wofi)
+IRRELEVANT_DIRS=(hypr mako swaync waybar wofi "$0" .git)
+
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 IGNORE_FILE="$REPO_DIR/.stow-local-ignore"
 
