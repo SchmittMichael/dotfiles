@@ -126,7 +126,7 @@
     "exec": "$HOME/.config/waybar/scripts/gpuinfo.sh",
     "return-type": "json",
     "interval": 3,
-    "format": "<span font='Material Icons' size='20000' rise='-3000'>󰾲\u2009</span> {text}%",
+    "format": "<span font='Material Icons' size='20000' rise='-3000'>󰾲\u2009</span> {text}",
   },
   "clock": {
     "interval": 60,
