@@ -35,6 +35,8 @@ return {
         sql = { "sql_formatter" },
         tex = { "latexindent" },
         toml = { "taplo" },
+        rust = { "rustfmt" },
+        xml = { "xmllint" },
       },
       -- format_on_save = format_opts,
     })
@@ -52,6 +54,10 @@ return {
     -- black settings
     conform.formatters.black = {
       prepend_args = { "-l", "120" },
+    }
+
+    conform.formatters.xmllint = {
+      prepend_args = { "--format" },
     }
   end,
 }
