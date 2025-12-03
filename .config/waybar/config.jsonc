@@ -126,7 +126,7 @@
     "exec": "$HOME/.config/waybar/scripts/gpuinfo.sh",
     "return-type": "json",
     "interval": 3,
-    "format": "<span font='Material Icons' size='20000' rise='-3000'>󰾲\u2009</span> {text}%",
+    "format": "<span font='Material Icons' size='20000' rise='-3000'>󰾲\u2009</span> {text}",
   },
   "clock": {
     "interval": 60,
@@ -137,6 +137,7 @@
     "locale": "de_DE.utf8",
     "calendar": {
       "mode": "month",
+      "mode-mon-col": 3,
       "on-scroll": 1,
       "on-click-right": "mode",
       "format": {
@@ -149,8 +150,8 @@
     },
     "actions": {
       "on-click-right": "mode",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up",
     },
   },
   "tray": {

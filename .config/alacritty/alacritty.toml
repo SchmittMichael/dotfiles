@@ -8,6 +8,7 @@ general.import = [
 decorations = "none"
 startup_mode =  "Maximized"
 opacity = 0.85
+padding = {x = 5, y = 5}
 
 [font]
-normal = { family = "Hack Nerd Font" }
+normal.family = "Hack Nerd Font"
