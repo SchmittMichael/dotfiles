@@ -4,6 +4,14 @@ return {
   cmd = { "LspInfo", "LspRestart", "LspInstall", "LspUninstall" },
   config = function()
     vim.lsp.inlay_hint.enable(true)
+
+    vim.lsp.config["tinymist"] = {
+      cmd = { "tinymist" },
+      filetypes = { "typst" },
+      settings = {
+        formatterMode = "typstyle",
+      },
+    }
   end,
   keys = {
     { "<C-s>", vim.lsp.buf.signature_help, mode = { "n", "i" }, desc = "Show function signature" },

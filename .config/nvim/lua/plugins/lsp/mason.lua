@@ -1,9 +1,11 @@
 require("utils")
 
 local default_packages = {
-  -- lsps --
+  -- language server --
   -- "ansible-language-server",
   "bash-language-server",
+  "css-lsp",
+  "clangd",
   "dockerfile-language-server",
   "docker-compose-language-service",
   "html-lsp",
@@ -13,6 +15,7 @@ local default_packages = {
   "texlab",
   "pyright",
   "ruff",
+  "tinymist",
   "typescript-language-server",
   "yaml-language-server",
   -- formatter --
