@@ -219,8 +219,7 @@ alias gwtmv='git worktree move'
 alias gwtrm='git worktree remove'
 
 # work related
-if cat /etc/passwd | grep anevis-admin > /dev/null
-    alias "'z ansible'='cd ~/workspace/ansible'"
+if grep -q anevis-admin /etc/passwd
     alias rn='run-it'
     alias mongodocker='mongosh --port 17027 -u root -p password --authenticationDatabase admin uat'
     alias serv='anevis-services'
