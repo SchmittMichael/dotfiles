@@ -2,7 +2,6 @@ set LAPTOP_USER "michael"
 set LAPTOP_IP "192.168.178.49"
 set HOST_IDENTIFIER "$LAPTOP_USER@$LAPTOP_IP"
 
-
 function connect-to-laptop --description "Helper function to ssh to the WSL of my laptop, while disabling suspend for the time connected"
   set -l fish_exit_on_error true
 
@@ -23,4 +22,36 @@ end
 
 function __run_ps1_on_laptop --argument-name command
   ssh "$HOST_IDENTIFIER" "/mnt/c/Windows/System32/WindowsPowerShell/v1.0//powershell.exe -c '$command'"
+end
+
+function copy-to-laptop --description "Copy files to my laptop using SCP"
+  if test (count $argv) -lt 1
+    echo "Usage: $(status function) <source> [destination]"
+    return 1
+  end
+
+  set source $argv[1]
+  set destination "~/Downloads"
+
+  if test (count $argv) -ge 2
+    set destination $argv[2]
+  end
+
+  scp -r $source $HOST_IDENTIFIER:$destination
+end
+
+function copy-from-laptop --description "Copy files from my laptop to my desktop using SCP"
+  if test (count $argv) -lt 1
+    echo "Usage: $(status function) <source> [destination]"
+    return 1
+  end
+
+  set source $argv[1]
+  set destination "."
+
+  if test (count $argv) -ge 2
+    set destination $argv[2]
+  end
+
+  scp -r $HOST_IDENTIFIER:$source $destination
 end
