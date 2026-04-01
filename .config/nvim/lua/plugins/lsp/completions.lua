@@ -82,5 +82,11 @@ return {
         { name = "buffer" }, -- completes existing text in buffer
       }),
     })
+
+    vim.api.nvim_create_user_command(
+      "CompletionDisable",
+      function() cmp.setup({ enabled = false }) end,
+      { desc = "Disable intellisense completion." }
+    )
   end,
 }
