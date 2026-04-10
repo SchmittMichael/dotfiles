@@ -28,6 +28,8 @@ local default_packages = {
   -- linter --
   "pylint",
   "shellcheck",
+  -- other --
+  "tree-sitter-cli",
 }
 
 local info = vim.log.levels.INFO
@@ -58,7 +60,7 @@ local function install_packages(mr, packages)
 end
 
 -- command to force install required packages (removes non required tools as well)
-vim.api.nvim_create_user_command("MasonReinstall", function()
+vim.api.nvim_create_user_command("MasonPurgeReinstall", function()
   local mr = require("mason-registry")
   local installed_packages = mr.get_installed_package_names()
   local merged_packages = Merge_sets(default_packages, installed_packages)
@@ -66,7 +68,18 @@ vim.api.nvim_create_user_command("MasonReinstall", function()
   vim.cmd("Lazy load mason.nvim")
   vim.cmd("MasonUninstallAll")
   install_packages(mr, merged_packages)
-end, { desc = "Reinstall all required packages." })
+  mason_notify("Finished puring packages and reinstalling only the required ones", info)
+end, { desc = "Uninstall all installed packages and reinstall the required ones defined in the config." })
+
+vim.api.nvim_create_user_command("MasonSyncInstall", function()
+  local mr = require("mason-registry")
+  local installed_packages = mr.get_installed_package_names()
+  local merged_packages = Merge_sets(default_packages, installed_packages)
+
+  vim.cmd("Lazy load mason.nvim")
+  install_packages(mr, merged_packages)
+  mason_notify("Finished installing missing required packages.", info)
+end, { desc = "Install all required packages." })
 
 return {
   {

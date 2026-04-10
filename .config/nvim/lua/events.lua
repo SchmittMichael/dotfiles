@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
     end
 
     local bufnr = vim.api.nvim_get_current_buf()
-    local attached_lsps = vim.lsp.get_active_clients({ bufnr = bufnr })
+    local attached_lsps = vim.lsp.get_clients({ bufnr = bufnr })
 
     if #attached_lsps > 0 then
       -- trigger custom event for nvim-cmp to pick up on
