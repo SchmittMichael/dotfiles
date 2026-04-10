@@ -36,6 +36,7 @@ return {
     { "<leader>tb", ":Telescope buffers<CR>", desc = "Show active buffers" },
     { "<leader>tr", ":Telescope resume<CR>", mode = { "n" }, desc = "Resume telescope" },
     { "<leader>tk", ":Telescope keymaps<CR>", mode = { "n" }, desc = "Show all keymaps" },
+    { "<leader>tk", ":Telescope oldfiles<CR>", mode = { "n" }, desc = "Show recent files" },
     { "<leader>tgc", ":Telescope git_commits<CR>", mode = { "n" }, desc = "Show git commits" },
     { "<leader>tgb", ":Telescope git_branches<CR>", mode = { "n" }, desc = "Show git branches" },
     { "<leader>tgs", ":Telescope git_status<CR>", mode = { "n" }, desc = "Show git status" },
