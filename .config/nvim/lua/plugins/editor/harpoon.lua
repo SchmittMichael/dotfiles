@@ -1,9 +1,8 @@
 return {
   "ThePrimeagen/harpoon",
+  event = "VeryLazy",
   branch = "harpoon2",
   dependencies = { "nvim-lua/plenary.nvim" },
-  -- TODO: think about lazy loading
-  -- event = { "BufReadPre", "BufNewFile" },
   config = function()
     local harpoon = require("harpoon")
     local extensions = require("harpoon.extensions")
@@ -74,3 +73,4 @@ return {
     vim.keymap.set("n", "<C-S-N>", function() harpoon:list():next() end)
   end,
 }
+

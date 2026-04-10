@@ -1,11 +1,14 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", "williamboman/mason.nvim" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "nvim-treesitter/nvim-treesitter-context",
+    },
     branch = "main",
     build = ":TSUpdate",
     event = { "BufReadPre", "BufNewFile" },
-    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall", "TSUninstall" },
+    cmd = { "TSUpdate", "TSInstall", "TSUninstall" },
     opts = {
       highlight = {
         enable = true,
@@ -37,15 +40,6 @@ return {
         "vim",
         "vimdoc",
         "yaml",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          scope_incremental = false,
-          node_decremental = "<bs>",
-        },
       },
     },
     config = function(plugin, opts)
@@ -94,6 +88,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     branch = "main",
+    lazy = true,
     opts = {
       move = {
         set_jumps = true, -- whether to set jumps in the jumplist
@@ -165,6 +160,14 @@ return {
         )
       end
     end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = true,
+    opts = {
+      on_attach = function(bufnr) return vim.api.nvim_buf_line_count(bufnr) < TS_MAX_LINES end,
+      max_lines = 3,
+    },
   },
   {
     "windwp/nvim-ts-autotag",

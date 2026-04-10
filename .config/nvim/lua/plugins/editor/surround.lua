@@ -1,1 +1,6 @@
-return { "nvim-mini/mini.surround", version = "*", event = { "BufReadPre", "BufNewFile" }, opts = {}, }
+return {
+  "nvim-mini/mini.surround",
+  version = "*",
+  event = { "BufReadPre", "BufNewFile" },
+  opts = {},
+}
