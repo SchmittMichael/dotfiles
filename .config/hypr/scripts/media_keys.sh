@@ -82,7 +82,16 @@ playerctl_wrapper() {
   fi
 
   local player=$(get_current_player)
-  playerctl -p "$player" "$command"
+  
+  # run with determined player, unless get_current_player gets it wrong, then use default
+  # mostly a fix for to brave/chromium
+  if ! playerctl -p "$player" "$command"; then
+    echo "Using playerctl default as fallback!"
+    playerctl "$command"  
+    player=$(playerctl -l | grep -v "$player" | head -n1)  
+    echo "Updated player: '$player'"
+  fi
+
   notify_user "$player" "$command"
 }
 
