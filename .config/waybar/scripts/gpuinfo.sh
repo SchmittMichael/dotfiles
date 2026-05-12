@@ -2,7 +2,7 @@
 
 set -e
 
-output=$(rocm-smi -d 0 --showuse --showmemuse --showpower --showtemp --json)
+output=$(rocm-smi -d 0 --showuse --showmemuse --showpower --showtemp --json 2>/dev/null)
 
 use=$(jq -r '.card0["GPU use (%)"]' <<<"$output")
 temp=$(jq -r '.card0["Temperature (Sensor edge) (C)"]' <<<"$output")
