@@ -4,7 +4,7 @@ return {
     options = {
       section_separators = "",
       component_separators = "│",
-      theme = "tokyonight",
+      theme = "auto",
     },
   },
 }

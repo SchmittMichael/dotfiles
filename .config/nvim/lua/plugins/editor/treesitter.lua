@@ -25,7 +25,7 @@ return {
         "javascript",
         "jsdoc",
         "json",
-        "jsonc",
+        -- "jsonc",
         "lua",
         "luadoc",
         "luap",
@@ -45,6 +45,7 @@ return {
     config = function(plugin, opts)
       local TS = require(plugin.name)
       TS.setup(opts)
+      TS.install(opts.ensure_installed)
 
       local installed_parsers = TS.get_available()
 
