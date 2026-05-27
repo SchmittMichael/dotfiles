@@ -13,6 +13,7 @@ nmap <leader>fg :action FindInPath<CR>
 nmap <leader>gf :action CodeCleanup<CR>
 nmap <leader>gf :action OptimizeImports<CR> <bar> :action ReformatCode<CR>
 nmap <leader>fc :action GotoClass<CR>
+nmap <leader>ca :action ShowIntentionActions <CR>
 
 " line moving
 map <A-j> :action MoveLineDown<CR>
