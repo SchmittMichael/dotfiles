@@ -4,10 +4,9 @@ functions/*
 !functions/fish_user_key_bindings.fish
 
 # ignore variables
-fish_variables
+fish_variables*
 
 # plugin specific stuff
 _tide*
 conf.d/git.fish
-completions/fisher.fish
-completions/tide.fish
+completions/*
