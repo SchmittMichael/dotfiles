@@ -1,33 +1,44 @@
 {
   "$schema": "/etc/xdg/swaync/configSchema.json",
+
   "positionX": "right",
   "positionY": "top",
   "layer": "overlay",
   "control-center-layer": "top",
   "layer-shell": true,
+
   "control-center-margin-top": 13,
-  "control-center-margin-bottom": 0,
+  "control-center-margin-bottom": 13,
   "control-center-margin-right": 14,
   "control-center-margin-left": 0,
-  "notification-2fa-action": true,
-  "notification-inline-replies": true,
-  "notification-icon-size": 48,
-  "notification-body-image-height": 160,
-  "notification-body-image-width": 200,
+
+  "control-center-width": 400,
+  "control-center-height": -1,
+  "fit-to-screen": false,
+
   "notification-window-width": 400,
+  "notification-window-height": -1,
+  "notification-icon-size": 44,
+  "notification-body-image-height": 140,
+  "notification-body-image-width": 200,
+
   "timeout": 6,
   "timeout-low": 3,
   "timeout-critical": 0,
-  "fit-to-screen": false,
-  "control-center-width": 400,
-  "control-center-height": 1000,
+
+  "notification-2fa-action": true,
+  "notification-inline-replies": true,
+  "notification-grouping": true,
+
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
-  "transition-time": 200,
+  "transition-time": 150,
   "hide-on-clear": false,
   "hide-on-action": true,
   "script-fail-notify": true,
-  "notification-grouping": false,
+  "relative-timestamps": true,
+  "text-empty": "No notifications",
+
   "widgets": [
     "buttons-grid",
     "volume",
@@ -36,22 +47,23 @@
     "title",
     "notifications"
   ],
+
   "widget-config": {
     "title": {
       "text": "Notifications",
       "clear-all-button": true,
       "button-text": ""
     },
+
     "dnd": {
       "text": "Do Not Disturb"
     },
-    "label": {
-      "text": "Notification"
-    },
+
     "mpris": {
-      "image-size": 50,
-      "image-radius": 0
+      "image-size": 48,
+      "image-radius": 10
     },
+
     "volume": {
       "label": "",
       "show-per-app": true,
@@ -60,8 +72,9 @@
       "expand-button-label": "",
       "collapse-button-label": "",
       "animation-type": "slide_down",
-      "animation-duration": 250
+      "animation-duration": 150
     },
+
     "buttons-grid": {
       "buttons-per-row": 4,
       "actions": [
