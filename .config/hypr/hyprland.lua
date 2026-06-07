@@ -368,8 +368,8 @@ hl.window_rule({
 	name = "steam-games-fullscreen",
 	match = {
 		class = "^(steam_app_.*)$",
-		fullscreen = true,
 	},
+	fullscreen = true,
 })
 
 -- Hyprland-run windowrule
