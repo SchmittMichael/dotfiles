@@ -54,11 +54,16 @@ return {
         callback = function(ev)
           local ft = ev.match
 
-          if
-            not vim.tbl_contains(installed_parsers, ft) -- disable TS for non installed parsers
-            or vim.api.nvim_buf_line_count(ev.buf) > TS_MAX_LINES -- disable TS for large files
-          then
-            return
+          if not vim.tbl_contains(installed_parsers, ft) then -- disable TS for non installed parsers
+            -- workarounds for missing parsers
+            if ft == "sh" then
+              ft = "bash"
+            elseif ft == "ymal.ansible" then
+              ft = "ymal"
+            end
+            --
+          elseif vim.api.nvim_buf_line_count(ev.buf) > TS_MAX_LINES then
+            return -- disable TS for large files
           end
 
           local enabled = function(feature)
