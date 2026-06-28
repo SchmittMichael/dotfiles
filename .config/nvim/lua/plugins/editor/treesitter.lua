@@ -19,6 +19,7 @@ return {
       ensure_installed = {
         "bash",
         "c",
+        "cpp",
         "diff",
         "dockerfile",
         "html",
@@ -40,6 +41,7 @@ return {
         "vim",
         "vimdoc",
         "yaml",
+        "zig",
       },
     },
     config = function(plugin, opts)
@@ -52,15 +54,19 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
         callback = function(ev)
-          local ft = ev.match
+          local buffer_ft = ev.match
+          local ft = buffer_ft
 
-          if not vim.tbl_contains(installed_parsers, ft) then -- disable TS for non installed parsers
+          if not vim.tbl_contains(installed_parsers, buffer_ft) then -- disable TS for non installed parsers
             -- workarounds for missing parsers
-            if ft == "sh" then
+            if buffer_ft == "sh" then
               ft = "bash"
-            elseif ft == "ymal.ansible" then
+            elseif buffer_ft == "ymal.ansible" then
               ft = "ymal"
+            elseif buffer_ft == "jsonc" then
+              ft = "json"
             end
+
             --
           elseif vim.api.nvim_buf_line_count(ev.buf) > TS_MAX_LINES then
             return -- disable TS for large files
