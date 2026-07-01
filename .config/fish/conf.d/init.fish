@@ -1,5 +1,6 @@
 function add_to_path --description "Prepends a directory to PATH if it exists"
-  set -l dir "$argv[1]"
+  set -l dir $argv[1]
+  echo "Dir $dir"
 
   if test -d "$dir"
     set -gx PATH "$dir" $PATH
@@ -12,7 +13,7 @@ end
 
 
 if test -f "$HOME/.path_additions"
-  for path in (string collect < "$HOME/.path_additions")
+  for path in (cat "$HOME/.path_additions")
     add_to_path $path
   end
 else if type -q bass
