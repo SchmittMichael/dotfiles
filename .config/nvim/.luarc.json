@@ -1,5 +1,9 @@
 {
-    "diagnostics.globals": [
-        "vim"
+  "workspace": {
+    "library": [
+      "/snap/nvim/current/usr/share/nvim/runtime/lua", // snap version
+      "/usr/bin/share/nvim/runtime/lua" // normal install
     ]
+  },
+  "diagnostics.globals": ["vim"]
 }
