@@ -31,6 +31,7 @@ return {
       mode = { "n" },
       desc = "Find in all files",
     },
+    { "<leader>:", ":Telescope command_history<CR>", mode = { "n" }, desc = "View command history" },
     { "<leader>fs", ":Telescope grep_string<CR>", mode = { "n", "v" }, desc = "Find string in files" },
     -- Telescope prefix
     { "<leader>tb", ":Telescope buffers<CR>", desc = "Show active buffers" },

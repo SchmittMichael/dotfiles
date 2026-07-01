@@ -25,6 +25,10 @@ vim.opt.undofile = true
 vim.opt.scrolloff = 8
 
 
+-- command mode option
+vim.keymap.set("c", "<C-k>", "<C-p>")
+vim.keymap.set("c", "<C-j>", "<C-n>")
+
 -- keymap options --
 -- clear search highlighting
 vim.keymap.set("n", "<leader>cs", ":nohlsearch<CR>")
