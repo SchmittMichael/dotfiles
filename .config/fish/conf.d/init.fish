@@ -1,5 +1,5 @@
 function add_to_path --description "Prepends a directory to PATH if it exists"
-  set -l dir $argv[1]
+  set -l dir (string trim --  $argv[1])
 
   if test -d "$dir"
     set -gx PATH "$dir" $PATH
