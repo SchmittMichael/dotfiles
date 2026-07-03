@@ -35,6 +35,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal = "alacritty"
 local fileManager = "nautilus"
+local browser = "brave-origin"
 local menu = "wofi"
 
 -------------------
@@ -249,13 +250,13 @@ hl.bind(
 	hl.dsp.exec_cmd("killall " .. menu .. " || " .. terminal .. " -e " .. menu .. " --show run")
 )
 
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("brave"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("brave --incognito"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser .. " --incognito"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("discord"))
 
 -- Window actions
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("uwsm stop"))
+hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
