@@ -49,11 +49,11 @@ function git_current_branch
   git branch --show-current
 end
 
-function gcom
+function git_checkout_main
   git checkout (git_main_branch)
 end
 
-function gmom
+function git_merge_origin_main
   git merge origin/(git_main_branch)
 end
 
@@ -61,7 +61,7 @@ function gmum
   git merge upstream/(git_main_branch)
 end
 
-function groh
+function git_reset_hard
   git reset origin/(git_current_branch) --hard
 end
 

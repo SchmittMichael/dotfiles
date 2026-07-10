@@ -3,6 +3,8 @@ function add_to_path --description "Prepends a directory to PATH if it exists"
 
   if test -d "$dir"
     set -gx PATH "$dir" $PATH
+  else
+    echo "[WARNING]: Tried adding '$dir' to \$PATH, but directory doesn't exist..."
   end
 end
 
