@@ -13,20 +13,6 @@ usage() {
   echo "Usage: $(basename "$0") {play-pause|next|previous|--help|-h}"
 }
 
-get_icon() {
-  case $1 in
-    spotify)
-      echo " "
-      ;;
-    firefox)
-      echo "󰈹 "
-      ;;
-    *)
-      echo " "
-      ;;
-  esac
-}
-
 get_art_url() {
   local art_url=$(playerctl -p "$player" metadata mpris:artUrl)
 
@@ -50,15 +36,17 @@ notify_user() {
 
   local artist=$(playerctl -p "$player" metadata artist)
   local title=$(playerctl -p "$player" metadata title)
-  local icon=$(get_icon "$player")
   local cover_art=$(get_art_url)
   local status=$(playerctl -p "$player" status)
+
+  echo "$app_icon"
 
   notify-send -e \
     -h string:x-canonical-private-synchronous:mpris \
     -u low \
     -i "$cover_art" \
-    "$icon $title" "$artist ($status)"
+    -n "$player" \
+    "$title" "$artist ($status)"
 }
 
 get_current_player() {
@@ -82,13 +70,13 @@ playerctl_wrapper() {
   fi
 
   local player=$(get_current_player)
-  
+
   # run with determined player, unless get_current_player gets it wrong, then use default
   # mostly a fix for to brave/chromium
   if ! playerctl -p "$player" "$command"; then
     echo "Using playerctl default as fallback!"
-    playerctl "$command"  
-    player=$(playerctl -l | grep -v "$player" | head -n1)  
+    playerctl "$command"
+    player=$(playerctl -l | grep -v "$player" | head -n1)
     echo "Updated player: '$player'"
   fi
 
