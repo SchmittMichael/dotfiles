@@ -61,6 +61,10 @@ end)
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+
+-- editor
+hl.env("EDITOR", "nvim")
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -379,5 +383,11 @@ hl.window_rule({
 	match = { class = "hyprland-run" },
 
 	move = "20 monitor_h-120",
+	float = true,
+})
+
+hl.window_rule({
+	name = "ipe-floating-run",
+	match = { title = "Ipe: waiting" },
 	float = true,
 })
