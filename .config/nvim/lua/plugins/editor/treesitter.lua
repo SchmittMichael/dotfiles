@@ -51,7 +51,7 @@ return {
 
       local installed_parsers = TS.get_available()
 
-      vim.api.nvim_create_autocmd("FileType", {
+      vim.api.nvim_create_autocmd({ "FileType", "BufNewFile" }, {
         group = vim.api.nvim_create_augroup("lazyvim_treesitter", { clear = true }),
         callback = function(ev)
           local buffer_ft = ev.match
