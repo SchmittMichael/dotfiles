@@ -3,8 +3,8 @@ function battery --description "Returns current battery percentage"
   set -l bat_dirs $ps_dir/BAT*
 
   if test (count $bat_dirs) -eq 0
-      echo "Battery: N/A (no battery detected)"
-      return 1
+    echo "Battery: N/A (no battery detected)"
+    return 1
   end
 
   set -l bat_dir $bat_dirs[1]

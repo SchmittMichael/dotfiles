@@ -1,4 +1,4 @@
-function enable_conda
+function enable-conda
   # >>> conda initialize >>>
   # !! Contents within this block are managed by 'conda init' !!
   if test -f /home/michael/miniconda3/bin/conda
