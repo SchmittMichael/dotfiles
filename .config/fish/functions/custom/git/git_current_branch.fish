@@ -1,3 +1,3 @@
 function git_current_branch
-  git branch --show-current
+    git branch --show-current
 end

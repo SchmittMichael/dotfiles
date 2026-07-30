@@ -1,9 +1,9 @@
 function __update_arch
-  echo "Updating pacman..."
-  sudo pacman -Syu --noconfirm
+    echo "Updating pacman..."
+    sudo pacman -Syu --noconfirm
 
-  echo "Updating yay..."
-  yay
+    echo "Updating yay..."
+    yay
 end
 
 function __update_ubuntu
@@ -16,15 +16,15 @@ function __update_ubuntu
 end
 
 function update
-  set distro (sed -n "s/^ID=\(.*\)/\1/p" /etc/os-release)
+    set distro (sed -n "s/^ID=\(.*\)/\1/p" /etc/os-release)
 
-  switch $distro
-    case "arch"
-      __update_arch
-    case "ubuntu"
-      __update_ubuntu
-    case '*'
-      echo "Unknown distribution '$distro'"
-      exit 1
-  end
+    switch $distro
+        case arch
+            __update_arch
+        case ubuntu
+            __update_ubuntu
+        case '*'
+            echo "Unknown distribution '$distro'"
+            exit 1
+    end
 end
