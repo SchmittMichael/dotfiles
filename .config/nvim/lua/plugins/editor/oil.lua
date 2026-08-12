@@ -13,8 +13,7 @@ return {
     skip_confirm_for_simple_edits = true,
   },
   keys = {
-    { "-", ":Oil<CR>", mode = { "n" }, desc = "Open parent directory" },
-    { "<leader>-", function() require("oil").toggle_float() end, mode = { "n" }, desc = "Open parent directory" },
+    { "-", function() require("oil").toggle_float() end, mode = { "n" }, desc = "Open parent directory" },
   },
   cmd = { "Oil" },
 }

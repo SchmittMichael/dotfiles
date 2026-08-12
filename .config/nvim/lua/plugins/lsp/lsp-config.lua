@@ -19,14 +19,13 @@ return {
       { desc = "Informations about active lsp clients." }
     )
 
-    -- vim.api.nvim_create_user_command("LspRestart", function()
-    --   local clients = vim.lsp.get_clients()
-    --   for _, client in ipairs(clients) do
-    --     client.restart()
-    --     vim.print(vim.inspect(vim.lsp))
-    --     vim.print(vim.inspect(client))
-    --   end
-    -- end, { desc = "List active lsp clients." })
+    vim.api.nvim_create_user_command("LspRestart", function()
+      local clients = vim.lsp.get_clients()
+      for _, client in ipairs(clients) do
+        local name = client.config.name
+        vim.cmd(":lsp restart " .. name)
+      end
+    end, { desc = "List active lsp clients." })
   end,
   keys = {
     { "<C-s>", vim.lsp.buf.signature_help, mode = { "n", "i" }, desc = "Show function signature" },

@@ -12,6 +12,7 @@ return {
     "onsails/lspkind.nvim", -- vs-code like pictograms
     {
       "ray-x/lsp_signature.nvim",
+      enabled = false,
       opts = {
         bind = true,
         handler_opts = { border = "rounded" },
