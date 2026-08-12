@@ -21,11 +21,17 @@ if not test -f "$__fish_config_dir/functions/fisher.fish"
     echo "[WARNING]: Detected that 'fisher' isn't installed. Assuming fish isn't properly set up. Run 'fisher-init' to complete setup."
 end
 
+if string match -rq '^anevis-admin:' </etc/passwd
+    set -g WORK_ENV true
+else
+    set -g WORK_ENV false
+end
+
 if test -f "$HOME/.path_additions"
     while read -l path
         add_to_path $path
     end <~/.path_additions
-else if type -q bass
+else if type -q bass && $WORK_ENV
     echo "[WARNING]: using .profile fallback instead of '.path_additions'"
     bass source "$HOME/.profile"
 else

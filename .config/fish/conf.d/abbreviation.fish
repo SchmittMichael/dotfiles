@@ -1,18 +1,25 @@
 # shortcuts
+abbr -a d     'docker'
+abbr -a ghpr  'gh pr view --web'
+abbr -a ghrp  'gh repo view --web'
+abbr -a md    'mkdir -p'
+abbr -a n     'nvim'
 abbr -a off   'poweroff'
 abbr -a py    'python3'
-abbr -a d     'docker'
-abbr -a n     'nvim'
-abbr -a md    'mkdir -p'
-abbr -a ghpr  'gh pr view --web'
+abbr -a t     'tmux'
 
-## git abbr
+# common directories
+abbr -a -     'cd -'
+abbr -a dow   'cd ~/Downloads'
+abbr -a doc   'cd ~/Documents'
+
+# git abbr
 abbr -a g     'git'
 abbr -a gs    'git stash'
 abbr -a gsp   'git stash pop' 
 abbr -a gl    'git pull'
 abbr -a ga    'git add'
-abbr -a gcm   'git commit -m'
+abbr -a gcm --set-cursor 'git commit -m "%"'
 abbr -a gp    'git push'
 abbr -a gcom  'git_checkout_main'
 abbr -a gmom  'git_merge_origin_main'
@@ -25,6 +32,8 @@ abbr -a gst   'git status'
 abbr -a gsu   'git submodule update'
 abbr -a gs    'git stash'
 abbr -a gsp   'git stash pop'
+abbr -a gclo  'git clone'
+abbr -a glol  'git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset"'
 
 # typo fixes
 abbr -a suod  'sudo'

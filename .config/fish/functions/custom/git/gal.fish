@@ -1,12 +1,15 @@
 function gal --description "Add, commit and push all files in the current or given directory"
-    set -l options (fish_opt --short p --long path --optional-val)
+    set -l options \
+        (fish_opt --short p --long path --required-val) \
+        (fish_opt --long no-copy) \
+        (fish_opt --short a --long all)
+
     argparse $options -- $argv
     or return 1
 
     set -l path '.'
     if set -q _flag_path[1]
         set path $_flag_path[-1]
-
     end
 
     if test (count $argv) -eq 0
@@ -19,12 +22,24 @@ function gal --description "Add, commit and push all files in the current or giv
         return 1
     end
 
-    set gal_script "$HOME/custom_scripts/git_all"
-    if test -f $gal_script
-        bash $gal_script "$argv"
+    # git add handling
+    if set -q _flag_all
+        git add --all
     else
         git add "$path"
+    end
+
+    # git commit handling
+    if $WORK_ENV
+        gcan "$argv"
+    else
         git commit -m "$argv"
-        git push
+    end
+
+    # git push handling
+    git push
+
+    if not set -q _flag_no_copy
+        git_copy_commit_hash
     end
 end
