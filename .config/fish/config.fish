@@ -1,7 +1,7 @@
 set fish_greeting ""
 
 if status is-interactive
-    fish_vi_key_bindings
+    set -g fish_key_bindings fish_custom_key_bindings
 end
 
 # opencode
