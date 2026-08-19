@@ -70,9 +70,9 @@ return {
               ft = "json"
             end
 
-            --
+            -- disable TS for large files
           elseif vim.api.nvim_buf_line_count(ev.buf) > TS_MAX_LINES then
-            return -- disable TS for large files
+            return
           end
 
           local enabled = function(feature)

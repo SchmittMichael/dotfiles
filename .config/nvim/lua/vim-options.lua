@@ -47,7 +47,7 @@ vim.keymap.set("v", "<leader>y", '"+y', { noremap = true, silent = true, desc = 
 vim.api.nvim_create_user_command("Bx", ":bw", { desc = "Write and quit current buffer." })
 
 -- add force quit alias
-vim.api.nvim_create_user_command("Q", ":qa!", { desc = "Force quit Neovim without saving." })
+vim.api.nvim_create_user_command("Q", ":qa!", { desc = "Force quit Neovim without saving.", range = true })
 
 -- Create force completions logic init command
 vim.api.nvim_create_user_command("Completions", function()
