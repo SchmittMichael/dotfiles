@@ -2,7 +2,8 @@
   "workspace": {
     "library": [
       "/snap/nvim/current/usr/share/nvim/runtime/lua", // snap version
-      "/usr/bin/share/nvim/runtime/lua" // normal install
+      "/usr/bin/share/nvim/runtime/lua", // normal install
+      "${env:HOME}/.local/share/nvim/lazy" // plugin directory
     ]
   },
   "diagnostics.globals": ["vim"]
