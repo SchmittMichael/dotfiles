@@ -1,4 +1,5 @@
-require("utils")
+local utils = require("utils")
+
 return {
   "kkoomen/vim-doge",
   -- TODO: make more lazy
@@ -8,7 +9,7 @@ return {
     { "<leader>d", desc = "Docstring generation" },
   },
   config = function()
-    if not File_exists(vim.g.doge_install_path .. "/bin/vim-doge-helper") then
+    if not utils.file_exists(vim.g.doge_install_path .. "/bin/vim-doge-helper") then
       vim.cmd("call doge#install()")
     end
   end,

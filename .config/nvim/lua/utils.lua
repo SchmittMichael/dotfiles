@@ -1,3 +1,5 @@
+local M = {}
+
 local log_file_path = (os.getenv("HOME") or os.getenv("USERPROFILE")) .. "/Desktop/nvim.log"
 
 local function ensure_logfile_exists()
@@ -10,16 +12,21 @@ local function ensure_logfile_exists()
   file:close()
 end
 
-function DEBUG_LOG(message)
+function M.debug_log(...)
   ensure_logfile_exists()
   local current_time = os.date("%Y-%m-%d %H:%M:%S")
 
+  local values = {}
+  for i = 1, select("#", ...) do
+    values[i] = tostring(select(i, ...))
+  end
+
   local file = io.open(log_file_path, "a")
-  file:write(current_time .. " " .. message .. "\n")
+  file:write(current_time .. " " .. table.concat(values, "\t") .. "\n")
   file:close()
 end
 
-function File_exists(file)
+function M.file_exists(file)
   local f = io.open(file, "r")
   if f then
     f:close()
@@ -29,7 +36,7 @@ function File_exists(file)
   end
 end
 
-function Has_value(array, searched_val)
+function M.has_value(array, searched_val)
   for _, val in ipairs(array) do
     if val == searched_val then
       return true
@@ -38,12 +45,29 @@ function Has_value(array, searched_val)
   return false
 end
 
-function Merge_sets(set1, set2)
+function M.merge_sets(set1, set2)
   local result = set1
   for _, val in ipairs(set2) do
-    if not Has_value(result, val) then
+    if not M.has_value(result, val) then
       table.insert(result, val)
     end
   end
   return result
 end
+
+-- stylua: ignore
+function M.enter_normal()
+    vim.cmd("normal! <Esc>")
+end
+
+function M.enter_insert()
+  M.enter_normal()
+  vim.cmd("startinsert")
+end
+
+function M.enter_insert_after()
+  M.enter_normal()
+  vim.cmd("startinsert!")
+end
+
+return M

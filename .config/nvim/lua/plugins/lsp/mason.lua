@@ -1,4 +1,4 @@
-require("utils")
+local utils = require("utils")
 
 local default_packages = {
   -- language server --
@@ -63,7 +63,7 @@ end
 vim.api.nvim_create_user_command("MasonPurgeReinstall", function()
   local mr = require("mason-registry")
   local installed_packages = mr.get_installed_package_names()
-  local merged_packages = Merge_sets(default_packages, installed_packages)
+  local merged_packages = utils.merge_sets(default_packages, installed_packages)
 
   vim.cmd("Lazy load mason.nvim")
   vim.cmd("MasonUninstallAll")
@@ -74,7 +74,7 @@ end, { desc = "Uninstall all installed packages and reinstall the required ones 
 vim.api.nvim_create_user_command("MasonSyncInstall", function()
   local mr = require("mason-registry")
   local installed_packages = mr.get_installed_package_names()
-  local merged_packages = Merge_sets(default_packages, installed_packages)
+  local merged_packages = utils.merge_sets(default_packages, installed_packages)
 
   vim.cmd("Lazy load mason.nvim")
   install_packages(mr, merged_packages)
