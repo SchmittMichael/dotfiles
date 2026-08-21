@@ -1,45 +1,76 @@
-local queries = {}
+local picker_states = {}
 
-local function telescope_persistence(name, opts, persistence_key)
+local function open_persistent_picker(name, opts, persistence_key)
   local builtin = require("telescope.builtin")
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
 
   opts = vim.deepcopy(opts or {})
-
   persistence_key = persistence_key or name
 
-  local previous = queries[persistence_key] or ""
-  opts.default_text = previous
+  local previous = picker_states[persistence_key]
+  local previous_query = previous and previous.query
+  local previous_selection = previous and previous.selection_row
+
+  if previous_query ~= nil then
+    opts.default_text = previous_query
+  end
 
   local original_attach = opts.attach_mappings
 
   opts.attach_mappings = function(prompt_bufnr, map)
+    local picker = action_state.get_current_picker(prompt_bufnr)
+
     vim.api.nvim_create_autocmd("BufLeave", {
       buffer = prompt_bufnr,
       once = true,
-      callback = function() queries[persistence_key] = action_state.get_current_line() end,
+      callback = function()
+        picker_states[persistence_key] = {
+          query = action_state.get_current_line(),
+          selection_row = picker:get_selection() and picker:get_selection_row() or nil,
+        }
+      end,
     })
 
-    -- escape in visual mode instantly
-    vim.keymap.set("v", "<esc>", function() actions.close(prompt_bufnr) end, {
-      buffer = prompt_bufnr,
-      nowait = true,
-    })
+    -- Results may load asynchronously, so restore the row after the finder completes.
+    if previous_selection ~= nil then
+      local restored = false
 
-    -- If there was a previous query, select it.
-    if previous ~= "" then
-      vim.schedule(function()
-        if vim.api.nvim_get_current_buf() == prompt_bufnr then
-          local picker = action_state.get_current_picker(prompt_bufnr)
-          local prompt_prefix = picker.prompt_prefix or "> "
-
-          vim.cmd("stopinsert")
-
-          -- Move to the first character after the Telescope prompt prefix.
-          vim.api.nvim_win_set_cursor(0, { 1, #prompt_prefix })
-          vim.cmd("normal! v$")
+      picker:register_completion_callback(function(self)
+        if not restored then
+          restored = true
+          self:set_selection(previous_selection)
         end
+      end)
+    end
+
+    vim.keymap.set("v", "<esc>", function() actions.close(prompt_bufnr) end, { buffer = prompt_bufnr, nowait = true })
+    vim.keymap.set(
+      "v",
+      "<C-k>",
+      function() actions.move_selection_previous(prompt_bufnr) end,
+      { buffer = prompt_bufnr, nowait = true }
+    )
+    vim.keymap.set(
+      "v",
+      "<C-j>",
+      function() actions.move_selection_next(prompt_bufnr) end,
+      { buffer = prompt_bufnr, nowait = true }
+    )
+
+    -- Defer UI commands until Telescope has focused and initialized the prompt window.
+    if previous_query and previous_query ~= "" then
+      vim.schedule(function()
+        if vim.api.nvim_get_current_buf() ~= prompt_bufnr then
+          return
+        end
+
+        -- Select the restored query text.
+        local prompt_prefix = picker.prompt_prefix or "> "
+
+        vim.cmd("stopinsert")
+        vim.api.nvim_win_set_cursor(0, { 1, #prompt_prefix })
+        vim.cmd("normal! v$")
       end)
     end
 
@@ -54,12 +85,12 @@ local function telescope_persistence(name, opts, persistence_key)
 end
 
 local function persistent_picker(name, opts, persistence_key)
-  return function() telescope_persistence(name, opts, persistence_key) end
+  return function() open_persistent_picker(name, opts, persistence_key) end
 end
 
 return {
   "nvim-telescope/telescope.nvim",
-
+  version = "*",
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-ui-select.nvim",
@@ -138,13 +169,6 @@ return {
       persistent_picker("buffers"),
       mode = "n",
       desc = "Show active buffers",
-    },
-
-    {
-      "<leader>tr",
-      function() require("telescope.builtin").resume() end,
-      mode = "n",
-      desc = "Resume telescope",
     },
 
     {
