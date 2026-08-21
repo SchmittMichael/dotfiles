@@ -24,6 +24,13 @@ function add_to_path --description "Prepends a directory to PATH if it exists"
 end
 
 function main_init
+    # default setup
+    set -g fish_greeting ""
+
+    if status is-interactive
+        set -g fish_key_bindings fish_custom_key_bindings
+    end
+
     # fisher check
     if not test -f "$__fish_config_dir/functions/fisher.fish"
         echo "[WARNING]: Detected that 'fisher' isn't installed. Assuming fish isn't properly set up. Run 'fisher-init' to complete setup."
@@ -53,7 +60,6 @@ function main_init
     # external programs fish compatibility
     __source_cmd zoxide init fish
     __source_cmd fzf --fish
-
 end
 
 main_init
