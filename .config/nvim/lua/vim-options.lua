@@ -51,7 +51,7 @@ vim.api.nvim_create_user_command("Q", ":qa!", { desc = "Force quit Neovim withou
 
 -- Create force completions logic init command
 vim.api.nvim_create_user_command("Completions", function()
-  vim.cmd(":LspRestart")
+  vim.cmd(":lsp restart")
   vim.cmd(":Lazy load nvim-cmp")
 end, { desc = "Enable completions." })
 
