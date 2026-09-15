@@ -3,12 +3,12 @@ allow_images=true
 hide_scroll=true
 prompt=Search
 width=500
-# hight=400
 
 # settings
 term=alacritty
 insensitive=true
 no_actions=true # maybe turn off
+single_click=true
 
 # movement keys
 key_up=Up,Ctrl-k
