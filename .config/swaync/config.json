@@ -69,6 +69,7 @@
       "show-per-app": true,
       "show-per-app-icon": true,
       "show-per-app-label": true,
+      "expand-per-app": true,
       "expand-button-label": "",
       "collapse-button-label": "",
       "animation-type": "slide_down",
@@ -76,7 +77,7 @@
     },
 
     "buttons-grid": {
-      "buttons-per-row": 4,
+      "buttons-per-row": 5,
       "actions": [
         {
           "label": "",
@@ -93,8 +94,12 @@
           "command": "blueman-manager"
         },
         {
+          "label": " ",
+          "command": "hyprlock"
+        },
+        {
           "label": "",
-          "command": "wlogout"
+          "command": "uwsm stop"
         }
       ]
     }
