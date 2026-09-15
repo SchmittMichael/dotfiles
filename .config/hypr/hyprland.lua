@@ -66,6 +66,9 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 -- editor
 hl.env("EDITOR", "nvim")
 
+-- experimential steam settings (requires using Proton-Experimential)
+hl.env("PROTON_ENABLE_WAYLAND", "1")
+
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
@@ -186,7 +189,7 @@ hl.config({
 hl.config({
 	input = {
 		kb_layout = "us,de",
-		kb_variant = "",
+		kb_variant = "altgr-intl",
 		kb_model = "",
 		kb_options = "grp:win_space_toggle",
 		kb_rules = "",
@@ -197,7 +200,7 @@ hl.config({
 		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
 		touchpad = {
-			natural_scroll = false,
+			natural_scroll = true,
 		},
 	},
 })
@@ -264,7 +267,15 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("uwsm stop"))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(script_dir .. "/cliphist-wofi-img.sh | wl-copy"))
+hl.bind(
+	mainMod .. " + V",
+	hl.dsp.exec_cmd(
+		"pkill wofi || "
+			.. script_dir
+			.. "/cliphist-wofi-img.sh | wl-copy && "
+			.. 'hyprctl dispatch \'hl.dsp.send_shortcut({ mods = "CTRL", key = "V" })\''
+	)
+)
 
 -- Move focus vim-style
 hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "left" }))
@@ -377,13 +388,14 @@ hl.window_rule({
 	fullscreen = true,
 })
 
--- Hyprland-run windowrule
 hl.window_rule({
-	name = "move-hyprland-run",
-	match = { class = "hyprland-run" },
-
-	move = "20 monitor_h-120",
+	name = "steam-games-fullscreen",
+	match = {
+		class = "steam",
+		title = "Friends List",
+	},
 	float = true,
+	fullscreen = false,
 })
 
 hl.window_rule({
