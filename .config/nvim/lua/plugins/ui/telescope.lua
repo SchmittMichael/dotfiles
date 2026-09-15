@@ -2,7 +2,6 @@ local picker_states = {}
 
 local function open_persistent_picker(name, opts, persistence_key)
   local builtin = require("telescope.builtin")
-  local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
 
   opts = vim.deepcopy(opts or {})
@@ -44,33 +43,12 @@ local function open_persistent_picker(name, opts, persistence_key)
       end)
     end
 
-    vim.keymap.set("v", "<esc>", function() actions.close(prompt_bufnr) end, { buffer = prompt_bufnr, nowait = true })
-    vim.keymap.set(
-      "v",
-      "<C-k>",
-      function() actions.move_selection_previous(prompt_bufnr) end,
-      { buffer = prompt_bufnr, nowait = true }
-    )
-    vim.keymap.set(
-      "v",
-      "<C-j>",
-      function() actions.move_selection_next(prompt_bufnr) end,
-      { buffer = prompt_bufnr, nowait = true }
-    )
-
     -- Defer UI commands until Telescope has focused and initialized the prompt window.
     if previous_query and previous_query ~= "" then
       vim.schedule(function()
         if vim.api.nvim_get_current_buf() ~= prompt_bufnr then
           return
         end
-
-        -- Select the restored query text.
-        local prompt_prefix = picker.prompt_prefix or "> "
-
-        vim.cmd("stopinsert")
-        vim.api.nvim_win_set_cursor(0, { 1, #prompt_prefix })
-        vim.cmd("normal! v$")
       end)
     end
 
