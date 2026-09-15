@@ -212,3 +212,12 @@ textview:focus,
   border-color: @accent;
   color: white;
 }
+
+.notification-row
+.notification-background
+.notification
+.notification-default-action
+.notification-content
+.image {
+    border-radius: 0px;
+}
