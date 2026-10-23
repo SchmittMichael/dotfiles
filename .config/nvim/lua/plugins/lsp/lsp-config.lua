@@ -19,8 +19,8 @@ return {
     )
   end,
   keys = {
-    { "<C-s>", vim.lsp.buf.signature_help, mode = { "n", "i" }, desc = "Show function signature" },
-    { "K", vim.lsp.buf.hover, mode = { "n" }, desc = "Show function description" },
-    { "<leader>rn", vim.lsp.buf.rename, mode = { "n", "v" }, desc = "Lsp rename" },
+    { "<C-s>", function() vim.lsp.buf.signature_help() end, mode = { "n", "i" }, desc = "Show function signature" },
+    { "K", function() vim.lsp.buf.hover() end, mode = { "n" }, desc = "Show function description" },
+    { "<leader>rn", function() vim.lsp.buf.rename() end, mode = { "n", "v" }, desc = "Lsp rename" },
   },
 }

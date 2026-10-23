@@ -1,6 +1,7 @@
 return {
   "j-hui/fidget.nvim",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "LspProgress",
+  cmd = "Fidget",
   opts = {
     -- options
   },
