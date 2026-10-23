@@ -350,9 +350,21 @@ hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURC
 })
 
 -- Requires playerctl
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd(script_dir .. "/media_keys.sh play-pause"), { locked = true })
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd(script_dir .. "/media_keys.sh next"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd(script_dir .. "/media_keys.sh previous"), { locked = true })
+hl.bind(
+	"XF86AudioPlay",
+	hl.dsp.exec_cmd(script_dir .. "/media_keys.sh play-pause"),
+	{ locked = true, ignore_mods = true }
+)
+hl.bind(
+  "XF86AudioNext",
+  hl.dsp.exec_cmd(script_dir .. "/media_keys.sh next"),
+  { locked = true, ignore_mods = true }
+)
+hl.bind(
+	"XF86AudioPrev",
+	hl.dsp.exec_cmd(script_dir .. "/media_keys.sh previous"),
+	{ locked = true, ignore_mods = true }
+)
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
@@ -389,7 +401,7 @@ hl.window_rule({
 })
 
 hl.window_rule({
-	name = "steam-games-fullscreen",
+	name = "steam-friends-float",
 	match = {
 		class = "steam",
 		title = "Friends List",
@@ -401,5 +413,15 @@ hl.window_rule({
 hl.window_rule({
 	name = "ipe-floating-run",
 	match = { title = "Ipe: waiting" },
+	float = true,
+})
+
+hl.window_rule({
+	name = "3d-control-panels-float",
+	match = {
+		class = "^$",
+		title = "^3D_Viewer - (Controls|Selection)$",
+		xwayland = true,
+	},
 	float = true,
 })
