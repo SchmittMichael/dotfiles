@@ -49,6 +49,7 @@ function main_init
             add_to_path $path
         end <~/.path_additions
     else if type -q bass
+        # Checking for inactive instead of printing to stderr, because of tide behavior
         if status is-interactive
             echo "[WARNING]: using .profile fallback instead of '.path_additions'"
         end
@@ -60,6 +61,12 @@ function main_init
     # external programs fish compatibility
     __source_cmd zoxide init fish
     __source_cmd fzf --fish
+
+    set -l opencode_completion_path "$HOME/.config/fish/completions/opencode.fish"
+    if type -q opencode && not test -f $opencode_completion_path
+        opencode --completions fish >$opencode_completion_path
+    end
+
 end
 
 main_init

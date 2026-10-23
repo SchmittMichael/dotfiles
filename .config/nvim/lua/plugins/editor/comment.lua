@@ -1,7 +1,15 @@
 return {
   {
     "numToStr/Comment.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      { "gc", mode = { "n", "x" }, desc = "Comment toggle linewise" },
+      { "gb", mode = { "n", "x" }, desc = "Comment toggle blockwise" },
+      { "gcc", desc = "Comment toggle current line" },
+      { "gbc", desc = "Comment toggle current block" },
+      { "gco", desc = "Comment insert below" },
+      { "gcO", desc = "Comment insert above" },
+      { "gcA", desc = "Comment insert end of line" },
+    },
     config = true,
   },
   {

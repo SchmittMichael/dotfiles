@@ -16,7 +16,8 @@ end
 
 return {
   "goolord/alpha-nvim",
-  event = "VimEnter",
+  event = vim.fn.argc() == 0 and "VimEnter" or nil,
+  cmd = "Alpha",
   enabled = true,
   init = false,
   opts = function()

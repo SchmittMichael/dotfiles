@@ -93,7 +93,7 @@ return {
     -- Not Telescope
     {
       "<leader>ca",
-      vim.lsp.buf.code_action,
+      function() vim.lsp.buf.code_action() end,
       mode = "n",
       desc = "Show code actions",
     },
