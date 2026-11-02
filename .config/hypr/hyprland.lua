@@ -34,7 +34,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal = "alacritty"
-local fileManager = "nautilus"
+local fileManager = "nautilus --new-window"
 local browser = "brave-origin"
 local menu = "wofi"
 
