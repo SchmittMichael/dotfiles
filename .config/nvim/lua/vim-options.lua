@@ -1,12 +1,16 @@
 -- global options --
 vim.g.mapleader = " "
 
--- default indentation settings
+-- Fallback indentation for new files or when detection is inconclusive.
 vim.cmd("filetype indent on")
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
+
+-- Let defaults and guess-indent take precedence over built-in style presets.
+vim.g.go_recommended_style = false
+vim.g.python_recommended_style = false
 
 -- linenumbers
 vim.wo.relativenumber = true
