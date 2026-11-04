@@ -10,6 +10,19 @@ local script_dir = config_dir .. "/scripts"
 local monitor_1 = "DP-1"
 local monitor_2 = "HDMI-A-1"
 
+--------------------------------
+------- UTILITY FUNCTIONS ------
+--------------------------------
+
+--- Kills existing process instances before executing a command.
+---@param command string Command to execute, including arguments
+---@param process_name? string Process name (defaults to the command's first word)
+---@return string
+local function kill_exec(command, process_name)
+	process_name = process_name or command:match("%S+")
+	return "pkill " .. process_name .. " || " .. command
+end
+
 -- set monitor names as env
 hl.env("MONITOR1", monitor_1)
 hl.env("MONITOR2", monitor_2)
@@ -251,11 +264,8 @@ end)
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 
-hl.bind(mainMod .. " + Super_L", hl.dsp.exec_cmd("killall " .. menu .. " || " .. menu .. " --show drun"))
-hl.bind(
-	mainMod .. " + Super_R",
-	hl.dsp.exec_cmd("killall " .. menu .. " || " .. terminal .. " -e " .. menu .. " --show run")
-)
+hl.bind("Super_L", hl.dsp.exec_cmd(kill_exec(menu .. " --show drun")), { release = true })
+hl.bind("Super_R", hl.dsp.exec_cmd(kill_exec(terminal .. " -e " .. menu .. " --show run", menu)), { release = true })
 
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser .. " --incognito"))
@@ -270,10 +280,12 @@ hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 hl.bind(
 	mainMod .. " + V",
 	hl.dsp.exec_cmd(
-		"pkill wofi || "
-			.. script_dir
-			.. "/cliphist-wofi-img.sh | wl-copy && "
-			.. 'hyprctl dispatch \'hl.dsp.send_shortcut({ mods = "CTRL", key = "V" })\''
+		kill_exec(
+			script_dir
+				.. "/cliphist-wofi-img.sh | wl-copy && "
+				.. 'hyprctl dispatch \'hl.dsp.send_shortcut({ mods = "CTRL", key = "V" })\'',
+			menu
+		)
 	)
 )
 
@@ -355,11 +367,7 @@ hl.bind(
 	hl.dsp.exec_cmd(script_dir .. "/media_keys.sh play-pause"),
 	{ locked = true, ignore_mods = true }
 )
-hl.bind(
-  "XF86AudioNext",
-  hl.dsp.exec_cmd(script_dir .. "/media_keys.sh next"),
-  { locked = true, ignore_mods = true }
-)
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd(script_dir .. "/media_keys.sh next"), { locked = true, ignore_mods = true })
 hl.bind(
 	"XF86AudioPrev",
 	hl.dsp.exec_cmd(script_dir .. "/media_keys.sh previous"),
