@@ -191,10 +191,8 @@ return {
     local layouts = require("telescope.pickers.layout_strategies")
 
     layouts.aspect = function(picker, columns, lines)
-      if columns >= 120 and columns > lines then
-        return layouts.horizontal(picker, columns, lines)
-      end
-      return layouts.vertical(picker, columns, lines)
+      local func = columns / lines >= 2.5 and layouts.horizontal or layouts.vertical
+      return func(picker, columns, lines)
     end
 
     telescope.setup({
@@ -205,9 +203,6 @@ return {
       },
       defaults = {
         layout_strategy = "aspect",
-        -- layout_config = {
-        --   vertical = { mirror = true, preview_cutoff = 0 },
-        -- },
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,
