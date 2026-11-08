@@ -241,19 +241,35 @@ hl.bind(mainMod .. " + F1", hl.dsp.exec_cmd(script_dir .. "/open_clean_browser.s
 hl.bind("F11", hl.dsp.window.fullscreen())
 
 hl.bind(mainMod .. " + comma", function()
+	if not hl.get_monitor(monitor_1) or not hl.get_monitor(monitor_2) then
+		return
+	end
+
 	local mon1_workspace = hl.get_active_workspace(monitor_1)
 	local mon2_workspace = hl.get_active_workspace(monitor_2)
-
-	local mon1_windows = hl.get_windows({ workspace = mon1_workspace })
-	local mon2_windows = hl.get_windows({ workspace = mon2_workspace })
-
-	for _, window in ipairs(mon1_windows) do
-		hl.dispatch(hl.dsp.window.move({ workspace = mon2_workspace, window = window }))
+	if not mon1_workspace or not mon2_workspace then
+		return
 	end
 
-	for _, window in ipairs(mon2_windows) do
-		hl.dispatch(hl.dsp.window.move({ workspace = mon1_workspace, window = window }))
+	local mon1_id = mon1_workspace.id
+	local mon2_id = mon2_workspace.id
+	if not mon1_id or not mon2_id or mon1_id <= 0 or mon2_id <= 0 or mon1_id == mon2_id then
+		return
 	end
+
+	-- Reserve an unused ID, not a workspace to move windows through.
+	local tmp_id = 11
+	while hl.get_workspace(tmp_id) do
+		tmp_id = tmp_id + 1
+	end
+
+	-- Move entire workspaces so their dwindle trees and split ratios stay intact.
+	hl.dispatch(hl.dsp.workspace.swap_monitors({ monitor1 = monitor_1, monitor2 = monitor_2 }))
+
+	-- Exchange IDs so each monitor keeps its original workspace number.
+	hl.dispatch(hl.dsp.workspace.change_id({ workspace = mon1_id, id = tmp_id }))
+	hl.dispatch(hl.dsp.workspace.change_id({ workspace = mon2_id, id = mon1_id }))
+	hl.dispatch(hl.dsp.workspace.change_id({ workspace = tmp_id, id = mon2_id }))
 end)
 
 -- TODO: think about removing
@@ -270,6 +286,7 @@ hl.bind("Super_R", hl.dsp.exec_cmd(kill_exec(terminal .. " -e " .. menu .. " --s
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(browser .. " --incognito"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("discord"))
+hl.bind(mainMod .. " + CTRL + SHIFT + ALT + L", hl.dsp.exec_cmd("xdg-open https://www.linkedin.com"))
 
 -- Window actions
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
@@ -400,6 +417,7 @@ hl.window_rule({
 	no_focus = true,
 })
 
+-- steam rules
 hl.window_rule({
 	name = "steam-games-fullscreen",
 	match = {
@@ -418,18 +436,5 @@ hl.window_rule({
 	fullscreen = false,
 })
 
-hl.window_rule({
-	name = "ipe-floating-run",
-	match = { title = "Ipe: waiting" },
-	float = true,
-})
-
-hl.window_rule({
-	name = "3d-control-panels-float",
-	match = {
-		class = "^$",
-		title = "^3D_Viewer - (Controls|Selection)$",
-		xwayland = true,
-	},
-	float = true,
-})
+-- Uni apps specific window rules (not tracked by git)
+require("uni_windowrules")
