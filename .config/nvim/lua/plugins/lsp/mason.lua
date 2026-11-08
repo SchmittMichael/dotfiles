@@ -19,6 +19,7 @@ local default_packages = {
   "typescript-language-server",
   "yaml-language-server",
   -- formatter --
+  "clang-format",
   "prettier",
   "stylua",
   "isort",

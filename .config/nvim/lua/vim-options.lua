@@ -23,6 +23,9 @@ vim.opt.splitright = true
 -- set case insensitivity as default
 vim.opt.ic = true
 
+-- enable project specific settings via `.nvim.lua`
+vim.o.exrc = true
+
 -- other
 vim.opt.langmenu = "en_US"
 vim.opt.undofile = true
