@@ -391,6 +391,8 @@ hl.bind(
 	{ locked = true, ignore_mods = true }
 )
 
+hl.bind("ALT + D", hl.dsp.global("discord:discord-toggle-deafen"))
+hl.bind("ALT + M", hl.dsp.global("discord:discord-toggle-mute"))
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
