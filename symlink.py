@@ -98,6 +98,8 @@ class Planner:
         self.actions: list[Link] = []
         self.failures: dict[FailureReason, list[Link]] = defaultdict(list)
 
+        self.need_to_link = 0
+
     def gather(self) -> Self:
         repo_root = Path(__file__).resolve().parent
         self.actions.clear()
@@ -112,6 +114,7 @@ class Planner:
                 if any(relative_path.match(pattern.rstrip("/")) for pattern in self.excludes):
                     continue
                 self._resolve(source, destination)
+                self.need_to_link += 1
 
         return self
 
@@ -165,7 +168,13 @@ class Planner:
         for link in self.actions:
             print(f"[MISSING]: {link}")
 
+        print(f"{len(self.failures[FailureReason.EXISTS])}/{self.need_to_link} linked")
+
     def _apply_link(self, force: bool, dry_run: bool) -> None:
+        if len(self.failures[FailureReason.EXISTS]) == self.need_to_link:
+            print(f"Nothing to do ({self.need_to_link}/{self.need_to_link} already linked)")
+            return
+
         if force:
             print_prefix = "would replace" if dry_run else "replaced"
 
@@ -195,7 +204,13 @@ class Planner:
             print(f"{'would link' if dry_run else 'linked'}: {link}")
 
     def _apply_unlink(self, force: bool, dry_run: bool) -> None:
-        for link in self.failures[FailureReason.EXISTS]:
+        existing_links = self.failures[FailureReason.EXISTS]
+
+        if len(existing_links) == 0:
+            print(f"Nothing to do (0/{self.need_to_link}) linked")
+            return
+
+        for link in existing_links:
             if not dry_run:
                 link.remove()
             print(f"{'would unlink' if dry_run else 'unlinked'}: {display_path(link.destination)}")
