@@ -91,15 +91,18 @@
   border-radius: 0 10px 10px 0;
 }
 
-#custom-power:hover {
+#custom-power:hover,
+box:hover > #custom-power {
   color: #e34b4b;
 }
 
-#custom-reboot:hover {
+#custom-reboot:hover,
+box:hover > #custom-reboot {
   color: #e69138;
 }
 
-#custom-sleep:hover {
+#custom-sleep:hover,
+box:hover > #custom-sleep {
   color: #4a90b5;
 }
 
